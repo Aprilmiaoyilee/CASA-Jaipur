@@ -1,3 +1,3 @@
 CASA MSc thesis template 
 
-test
+Access GEE app done through the thesis work: [explore here!](https://ee-miaoyilee.projects.earthengine.app/view/jaipur-urban-activities-analysis-app)
