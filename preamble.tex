@@ -1,15 +1,75 @@
-\usepackage[none]{hyphenat}
-\pagestyle{plain}
-\raggedbottom
-\usepackage[nottoc,notlot,notlof]{tocbibind}
-\usepackage{pdfpages}
-\usepackage[width=\textwidth]{caption}
+% ---------- Hyphenation / Layout ----------
+\usepackage[none]{hyphenat}   % Disable automatic hyphenation
+\raggedbottom                 % Avoid large vertical stretches caused by floats
 
+% ---------- TOC / Front matter ----------
+\usepackage[nottoc,notlot,notlof]{tocbibind}  % Add bibliography to TOC, but not toc/lot/lof entries themselves
+\usepackage{pdfpages}                         % Insert external PDF pages (e.g., cover, declaration)
+
+% ---------- Captions / Subfigures ----------
+\usepackage[width=\textwidth]{caption}  % Ensure captions fit within text width
+\usepackage{subfig}                     % Provides \subfloat, compatible with bookdown fig.subcap
+
+% ---------- Floats ----------
+\usepackage{float}     % Provides [H] option for placing floats exactly here
+\usepackage{placeins}  % Provides \FloatBarrier to clear pending floats
+
+% ---------- Clear floats before new sections ----------
+\usepackage{etoolbox}
+\makeatletter
+\@ifundefined{chapter}{}{\pretocmd{\chapter}{\FloatBarrier}{}{}}
+\@ifundefined{section}{}{\pretocmd{\section}{\FloatBarrier}{}{}}
+\@ifundefined{subsection}{}{\pretocmd{\subsection}{\FloatBarrier}{}{}}
+\makeatother
+
+% =========================================================
+%                  Header / Footer (oneside)
+% =========================================================
+% =========================================================
+%                  Header / Footer (oneside)
+% =========================================================
 \usepackage{fancyhdr}
+
+% Ensure enough space for headers
+\setlength{\headheight}{15pt}
+
+% Default page style
 \pagestyle{fancy}
-\fancyhf{}
-\setlength{\headheight}{15pt}%
-\fancyhead[RO,RE]{\nouppercase{\leftmark}}
-\fancyfoot[CO, CE] {\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}                                 % Clear all header/footer fields
+\fancyhead[R]{\nouppercase{\leftmark}}     % Right header = current chapter
+\fancyfoot[C]{\thepage}                    % Footer center = page number
+\renewcommand{\headrulewidth}{0pt}         % No header line
+\renewcommand{\footrulewidth}{0pt}         % No footer line
+
+% --- Ensure \leftmark updates correctly ---
+% Define what goes into \leftmark when a new chapter starts
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\chaptername\ \thechapter.\ #1}{}%
+}
+
+% Apply the same style to "plain" pages (chapter openings, float pages)
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[R]{\nouppercase{\leftmark}}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% --- Fix for delayed header update ---
+% Force headers to refresh immediately at the start of every chapter
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\chapter}{\thispagestyle{fancy}}{}{}
+\makeatother
+
+% =========================================================
+
+\usepackage{afterpage}
+\makeatletter
+\let\old@chapter\@chapter
+\def\@chapter[#1]#2{%
+  \old@chapter[#1]{#2}%
+  \afterpage{\markboth{\chaptername\ \thechapter.\ #1}{}}%
+}
+\makeatother

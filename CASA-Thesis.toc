@@ -1,0 +1,45 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Literature Review}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Digital Urban Planning Platforms in the Era of Smart Cities}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Urban Data Scarcity: Challenges from the Global South}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Urban Development and Digital Policy in India and Jaipur}{8}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}National Context: India's Urbanisation and Digital Agenda}{8}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}City Context: Jaipur's Urban Structure and Spatial Heterogeneity}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Local Reality: Digital Initiatives and Data Limitations}{11}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Remote Sensing and Open Data for Digital Planning}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Existing Methods for Estimating Urban Activities}{13}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Population Disaggregation}{14}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Modelling Economic Vitality}{15}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Summary for Literature Review}{16}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Methodology}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Study Area}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Data Sources and Preparation}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Data for MGWR}{22}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Data for PCA}{26}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Population Disaggregation: MGWR--Dasymetric Hybrid Approach}{29}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Economic Activity Index: Principal Component Analysis Approach}{31}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Integration into GEE Web Application}{32}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Ethical Considerations}{33}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Results}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Response to RQ1: Where People Live -- Population Estimation}{35}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}MGWR Model Performance}{35}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Estimated Population Maps}{38}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Distribution Validation with GHSL}{39}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Explanatory Variables Shaping Population Density in the MGWR}{41}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Response to RQ1: Where Economic Activity levels are High -- Economic Activity Index (EAI)}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Correlation among Input Variables}{44}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}PCA Results}{46}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Spatial Patterns of Economic Activity}{49}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Response to RQ2: GEE -- Jaipur Urban Activities Analysis App}{54}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Discussion}{56}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Evaluating Population Disaggregation: Strengths and Localised Biases}{56}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Interpreting the EAI: Potentials and Methodological Limits}{59}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Evaluating the GEE Web App for Digital Planning}{60}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Limitations and Transferability}{62}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusion}{64}{chapter.6}%
+\contentsline {chapter}{Bibliography}{66}{chapter.6}%
+\contentsline {chapter}{Appendix A Research log}{77}{chapter*.33}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{Appendix B POI Kernel Density Correlation Matrix in MGWR}{79}{chapter*.34}%
+\contentsline {chapter}{Appendix C Codes for Transformation Steps in MGWR Population Disaggregation}{81}{chapter*.37}%
+\setcounter {tocdepth}{3}

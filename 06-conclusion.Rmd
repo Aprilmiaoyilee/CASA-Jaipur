@@ -1,10 +1,18 @@
 # Conclusion
 
-Short introduction to the chapter, reviewing the previous chapter and detailing what this one aims to achieve and build upon.
 
-## Recommedations
+The central question of this study was: how can digital and open-access planning be supported in a data-scarce context? Using Jaipur, India, as a case study, it explored methods for estimating urban activities from open and remote sensing data, and for translating these outputs into forms usable by planners through a web-based platform. Two stages of analysis were developed: residential population was estimated at the grid level using MGWR-based disaggregation, and an Economic Activity Index (EAI) was constructed through PCA to integrate multiple spatial indicators. Both outputs were then deployed in a GEE app, allowing planners and researchers to interact with the results.
 
-1. Adapt policy x
-1. Undertake data informed targeted greening
-1. Further work into this area
+The grid-level population model reproduced Jaipur’s overall settlement structure while also revealing systematic local biases. Overestimation was found in commercial cores, transport hubs, and planned estates, where intense POI signals and nighttime lights outweighed modest residential presence. Underestimation occurred in hillside villages, institutional complexes, and peri-urban croplands, where weak proxy values masked sustained habitation. These discrepancies show that while remote sensing proxies capture the overall distribution of settlement, they often misclassify specific contexts, particularly where residential and non-residential uses overlap.
+
+The EAI was designed to approximate the city’s economic environment by combining indicators of density, infrastructure, services, and illumination into a composite measure. It captured corridors of concentrated economic activity and highlighted industrial zones with strong workplace presence but limited residents. In this way, the index reflected contrasts between settlement and economic intensity, showing how open datasets such as nighttime lights, built-up area, and POI can be used to reveal patterns of economic activity in the absence of conventional statistics. Together, these two stages demonstrate how population and activity can be inferred from globally available data sources, offering planners alternative perspectives on urban structure and economy in contexts where surveys are irregular or absent.
+
+A further contribution of this study lies in the delivery. The GEE web app enabled outputs to be explored without specialist software, offering both accessibility and transparency. For practitioners in resource-constrained settings, such platforms illustrate how open data and cloud computing can deliver planning insights that are reproducible and shareable across institutional and public audiences. More broadly, in the Global South, where statistical surveys are irregular and access to proprietary planning tools is limited, the combination of remote sensing proxies and online delivery represents a practical step toward more open and collaborative planning support.
+
+Limitations must also be acknowledged. Each proxy introduces uncertainty: nighttime lights saturate in dense cores and underestimate poorly lit settlements, while building volume depends on footprint accuracy and height assignment. MGWR is bounded by the set of covariates available, and PCA compresses diverse dimensions into a single component that may not always align with theory. Proxies that performed well in Jaipur may also behave differently in cities with distinct infrastructures or economies, restricting transferability. Future work should integrate multi-source remote sensing (e.g. SAR, LiDAR, higher-frequency lights) and incorporate dynamic datasets (e.g. commuting flows, mobile-phone records) to capture ambient populations and improve robustness.
+
+In conclusion, this study has shown that in data-scarce contexts, open and remote sensing data combined with accessible web delivery can generate meaningful planning insights into population and economic activity. While not substitutes for detailed surveys, the approaches developed here provide a replicable pathway for producing indicative surfaces that planners can use to guide dialogue, experimentation, and decision-making. The work contributes both methodologically, by demonstrating how urban activities can be estimated from open data, and practically, by showing how results can be delivered in forms that expand access to digital planning support.
+
+
+
 

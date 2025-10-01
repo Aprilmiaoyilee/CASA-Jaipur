@@ -37,3 +37,13 @@ academic-research
 limitations
 transferability
 recommedations
+change-this-to-a-thesis
+word-count
+adding-a-pdf
+package-reproducibility
+citing-using-software
+figures-tables-hosting-gitbook
+including-figures-and-tables
+figures-1
+tables-1
+hosting-the-book

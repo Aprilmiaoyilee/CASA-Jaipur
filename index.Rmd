@@ -1,23 +1,23 @@
 --- 
-title: CASA dissertation using Bookdown
+title: 'Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India'
 
 author: 
 - |
-    | Andrew MacLachlan
+    | Miaoyi Li
     |    
-    | CASA0010, MSc Smart Cities Dissertation 
+    | CASA0010, MSc Urban Spatial Science Dissertation 
     |  
-    | Supervisor: Dr Andrew MacLachlan
+    | Supervisor: Dr Jens Kandt
     |
-    | Repository: https://andrewmaclachlan.github.io/CASA0005repo/
+    | Repository: https://github.com/Aprilmiaoyilee/CASA-Jaipur/
     |  
     | This dissertation is submitted in part requirement for the 
-    | MSc (Or MRes) in the Centre for Advanced Spatial Analysis, 
+    | MSc in the Centre for Advanced Spatial Analysis, 
     | Bartlett Faculty of the Built Environment, UCL
     |
-    | Word count:  
+    | Word count: 11182  
 
-date: "`r Sys.Date()`"
+date: "2025-08-22"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -25,10 +25,10 @@ classoption: oneside #openany or #twosides #if two then need to change headers a
 geometry: "left=4cm, right=3cm, top=2.5cm, bottom=2.5cm"
 fontsize: 12pt
 linestretch: 1.5
-bibliography: [book.bib, packages.bib, test.bib]
+bibliography: [book.bib, packages.bib, test.bib, thesisclean.bib]
 biblio-style: apa
 link-citations: yes
-github-repo: andrewmaclachlan/CASA-MSc-thesis
+github-repo: Aprilmiaoyilee/CASA-Jaipur
 description: "This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL "
 always_allow_html: yes
 ---
@@ -47,5 +47,11 @@ library(knitr)
 `r if (knitr:::is_latex_output()) '
 # Abstract {.unlisted .unnumbered}
 '`
-Some abstract text
+The lack of timely and disaggregated demographic and economic information often constrains urban digital planning in data-scarce contexts. This study examines the application of open and remote sensing data in generating alternative evidence for planning, using Jaipur, India, as a case study. Two complementary strands of analysis were developed: grid-level population estimation through Multiscale Geographically Weighted Regression (MGWR), and the construction of an Economic Activity Index (EAI) to capture spatial economic variation via principal component analysis (PCA) of indicators including built-up area, points of interest, and nighttime lights.
+
+The results show that while the population model broadly reproduced settlement structures, it also revealed systematic biases. Meanwhile, the EAI provided a composite representation of urban economic intensity. Both outputs were delivered through a Google Earth Engine (GEE) web application, enabling planners to interact with estimates and underlying variables.
+
+By demonstrating how open data and cloud-based tools can generate and share population and economic activity estimates, this study presents a practical and replicable pathway for expanding digital planning support in contexts where conventional statistics are limited.
+
+
 

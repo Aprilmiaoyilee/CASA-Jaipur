@@ -13,8 +13,7 @@ library(knitr)
 `r if (knitr:::is_latex_output()) '
 # Declaration {.unlisted .unnumbered}
 '`
-
-I hereby declare that this dissertation is all my own original work and that all sources have been acknowledged. It is xxx words in length
+I, Miaoyi Li, hereby declare that the work presented in this dissertation is entirely my own original work, and that all sources have been properly acknowledged. Furthermore, I declare that I used Google AI Studio - Gemini 2.5 to assist in summarizing research notes, code debugging and final proofreading.
 
 `r if (knitr:::is_html_output()) '
 # Acknowledgements{-}
@@ -22,7 +21,11 @@ I hereby declare that this dissertation is all my own original work and that all
 `r if (knitr:::is_latex_output()) '
 # Acknowledgements {.unlisted .unnumbered}
 '`
-I would like to thank blah blah
+I would like to express my sincere gratitude to my supervisor, Dr. Jens Kandt, for his endless patience and invaluable advice throughout my study. Jens’s encouragement and prompt feedback during our discussions and email exchanges greatly motivated me and helped shape this work.
+
+I am also deeply grateful to our colleagues from the Jaipur project, especially Dr. Nand Kumar and Prof. Mahesh Jat from Malaviya National Institute of Technology (MNIT) Jaipur, for their assistance with data access and their insightful suggestions on refining my methodologies. I would also like to thank all others involved in the project, which gave me a concrete understanding of the research process in practical planning — from data cleaning to analysis and visualisation — in a Global South context.
+
+Most importantly, my heartfelt thanks go to my family and friends for their unwavering support throughout my whole learning journey in London.
 
 
 ```{=latex}
@@ -48,12 +51,10 @@ library(readxl)
 library(fs)
 library(here)
 
-read_excel(here("tables", "abbreviations.xlsx"))%>%
-  arrange(Term) %>% # i.e. alphabetical order by Term
-  knitr::kable(booktabs = TRUE)%>% # booktab = T gives us a pretty APA-ish table
-  kable_styling(position = "center")%>%
-    row_spec(.,
-  row=0,
-  bold = TRUE)
+read_excel(here("tables","chapter2_abbreviations.xlsx")) |>
+  arrange(Term) |>
+  knitr::kable(booktabs = TRUE, longtable = TRUE) |>  
+  kableExtra::kable_styling(position = "center") |>
+  kableExtra::row_spec(0, bold = TRUE)
 ```
 

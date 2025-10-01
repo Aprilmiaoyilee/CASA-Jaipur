@@ -1,96 +1,312 @@
-# Figures, tables, hosting GitBook
+# Results
 
-This section is going to focus including figures and creating tables
+## Response to RQ1: Where People Live – Population Estimation
 
-```{r methodsflow, echo=FALSE, out.width="300pt", fig.cap="Summary of methdological procedure for (a).... and (b)...."}
+### MGWR Model Performance
+
+To justify the use of a local approach, the Multi-scale Geographically Weighted Regression (MGWR) was benchmarked against a global Ordinary Least Squares (OLS) model. As shown in Table \@ref(tab:modelcomparison), MGWR provides a substantially better fit, with an Adjusted $R^{2}$ of 0.789 compared to 0.668 for OLS, and an AICc of 364.814 versus 442.420. The ΔAICc of 77.6 decisively favors MGWR, confirming its suitability for disaggregating population in Jaipur.
+
+
+
+```{r table-narrower3, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{4pt}")
+```
+
+
+```{r modelcomparison, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse); library(kableExtra); library(readxl); library(here)
+df <- read_excel(here("tables","model_comparison_metrics.xlsx")) |>
+  setNames(c("Metric","OLS","MGWR","Interpretation"))
+
+if (knitr::is_latex_output()) {
+  df |>
+    kbl(
+      booktabs = TRUE,
+      longtable = TRUE,
+      escape = FALSE,
+      caption = "Comparative Performance Metrics of Global OLS and MGWR",
+      align = c(
+        "p{2.5cm}",  # Metric - 左对齐，固定宽度
+        "r",         # OLS - 右对齐，自动宽度
+        "r",         # MGWR - 右对齐，自动宽度  
+        "p{8cm}"     # Interpretation - 左对齐，固定宽度，支持换行
+      )
+    ) |>
+    kable_styling(position="center", latex_options="repeat_header", font_size=8.8) |>
+    row_spec(0, bold=TRUE)
+} else {
+  df |>
+    kbl(escape=FALSE, caption="Comparative Performance Metrics of Global OLS and MGWR",
+        align = c("l", "r", "r", "l")) |>
+    kable_styling(full_width=FALSE, position="center") |>
+    column_spec(4, width="28em", extra_css="word-wrap:break-word; white-space:normal;") |>
+    row_spec(0, bold=TRUE, align="l")
+}
+```
+
+
+
+```{r table-reset3, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{6pt}")
+```
+
+
+
+
+
+Beyond global fit indices, diagnostic checks confirmed the validity of the model. Moran’s I on MGWR residuals ($I = 0.0624, p = 0.0822$) indicated no significant global spatial autocorrelation. The residual map (Figure \@ref(fig:04RE-residual)), however, reveals localized patterns: central wards show balanced predictions, while the east and southeast display areas of systematic overestimation and the north–northeast shows systematic underestimation. Western districts present a fragmented mix of positive and negative residuals, highlighting local instability in model performance.
+
+Further regression diagnostics reinforced these findings. The residual–fitted scatterplot demonstrated homoscedasticity, while the Q–Q plot indicated that the residuals follow an approximately normal distribution (Figure \@ref(fig:04RE-residual-diagnostics)).
+
+An assessment of local multicollinearity using the Condition Number (CN) revealed that values across most of the study area ranged from 2 to 8, indicating stable parameter estimates. Although some central locations exhibited moderate CN values (10–17), these remain well below the critical threshold of 30 that signals severe collinearity, confirming that multicollinearity is not a substantive concern in the model(Figure \@ref(fig:04RE-CN)). In summary, the comparison with OLS and the full set of diagnostic checks confirm that MGWR is both statistically robust and spatially reliable, providing confidence in using its outputs as the basis for high-resolution population mapping in Jaipur.
+
+```{r 04RE-residual, echo=FALSE, out.width="60%", fig.align='center', fig.cap="MGWR Residuals Distribution Map"}
 library(here)
-knitr::include_graphics(here::here('general_images','example_flow.png'))
+knitr::include_graphics(here::here('thesis_images','04RE_residuals_map_gaussian_mgwr.png'))
 ```
-## Including figures and tables
 
-### Figures
+```{r 04RE-residual-diagnostics, echo=FALSE, fig.show='hold', fig.ncol=2, out.width='49%', fig.align='center', fig.cap='Residual Diagnostics: Residual–fitted and Q–Q plot', fig.subcap=c('Residual–fitted','Q–Q plot')}
+knitr::include_graphics(c(
+  here::here("thesis_images","04RE_residues.png"),
+  here::here("thesis_images","04RE_qqplot.png")
+))
+```
 
-To include the figure above use the code:
-
-`knitr::include_graphics(here::here('general_images','example_flow.png'))` 
-
-within a code chunk. In the chunk options you can specify the width and figure captions e.g. 
-
-`out.width="100pt", fig.cap="Summary of methdological procedure for (a).... and (b)...."`. 
-
-However, if you do show the code with `echo=TRUE` then you can't specify the `out.width`. 
-
-For making flow diagrams have a look at:
-
-1. Lucidchart
-1. Draw.io
-
-### Tables
-
-For creating tables i'd suggest creating either an excel file or `.csv` and then reading the data into R and using the `kabble` package to format it how you wish. The example below is from the abbreviations section
-
-
-```{r tableexample, echo=TRUE}
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-library(readxl)
-library(fs)
+```{r 04RE-CN, echo=FALSE, out.width="60%", fig.align='center', fig.cap="MGWR Local Multicollinearity Test using Condition Number "}
 library(here)
-
-#read in data
-read_excel(here("tables", "abbreviations.xlsx"))%>%
-  arrange(Term) %>% # i.e. alphabetical order by Term
-  # booktab = T gives us a pretty APA-ish table
-  knitr::kable(booktabs = TRUE)%>% 
-  kable_styling(position = "center")%>%
-  # any specifc row changes you want
-    row_spec(.,
-  row=0,
-  bold = TRUE)
+knitr::include_graphics(here::here('thesis_images','04RE_CN_local_multicollinearity.png'))
 ```
 
-You do loads of things with kabble including adding small visulisations within the table - [consult the documentation for more info](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview).
+### Estimated Population Maps
 
-**If in doubt, keep it simple**
+Figure \@ref(fig:04RE-wardvsmgwr) compares the ward-level population distribution with the MGWR-derived 100 m raster estimates. While the ward-level map provides a broad overview, its reliance on administrative boundaries produces artificial discontinuities and conceals intra-ward heterogeneity.
 
-other useful arguments for tables:
+Using weights estimated from the MGWR model, ward populations were disaggregated onto a 100 m grid. The resulting surface reveals finer spatial detail, with pronounced concentrations along Jaipur’s central urban corridors and particularly dense clusters in the historic core. Secondary concentrations are also visible in the northwest and southeast, reflecting emerging population centres. Non-residential areas remain blank by design, reflecting the methodological assumption that only residential zones accommodate population.
 
-* `column_spec(2, width = "9cm")` = set column width
+The gridded representation offers a more nuanced view of settlement patterns by mitigating boundary effects and uncovering within-ward variation that coarse administrative data cannot capture.
 
-* `kable(timeline,longtable = T....`= allow the table to go over multiple pages
-
-For example...
-\newpage
-```{r kable, echo=TRUE}
-read_excel(here("tables", "policy.xlsx"))%>%
-  mutate_all(~ replace_na(.x, "")) %>%
-  # booktab = T gives us a pretty APA-ish table
-  knitr::kable(longtable = T, booktabs = T, 
-               caption = 'Relevant influential international, metropolitan and local UHI and urban expansion policies, strategies and assessments (with publication date) referred to in this paper. * Denotes documents that lack specific UHI related policy but recognise the value of maintaining vegetation.')%>% 
-  kable_styling(position = "center", full_width = T)%>%
-  # any specifc row changes you want
-    row_spec(.,
-  row=c(0,1,8, 18),
-  bold = TRUE)%>%
-  column_spec(1, width = "14cm")%>%
-  row_spec(c(1, 8, 18), hline_after = T)
+```{r 04RE-wardvsmgwr, echo=FALSE, out.width="98%", fig.align='center', fig.cap="Ward-level Population Distribution vs MGWR-derived Population Distribution"}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_wardvsmgwr.png'))
 ```
 
-**Note** if you see the caption in the `.pdf` version it goes off the side of the page --- this is the reason why you don't show code in a `.pdf`. If you ever had to you could just seperate the string into sections and at the start use `paste("hello","this","is","a","string", sep=" ")`
 
-Now remember to cross reference this table, it would be...Table `\@ref(tab:kable)`, giving Table \@ref(tab:kable)
 
-## Hosting the book
+### Distribution Validation with GHSL
 
-You will need to create a new GitHub repository to host your book online using GitHub pages --- like the example is. GitHub pages takes a load of `.html` files and makes a website. 
+To assess the plausibility of the MGWR-based disaggregation, the resulting population grid was compared with the 2020 GHSL (GHS-POP) estimates for Jaipur. GHSL was selected as a reference because it applies a similar principle of allocating population only to residential built-up areas, ensuring a consistent basis for comparison [@pesaresiAdvancesGlobalHuman2024a].
 
-To do so you need to set up a few things
+Figure \@ref(fig:04RE-GHSL-pop) shows the distribution of population counts per 100 m grid (equivalent to residents per hectare). Both datasets follow a broadly similar pattern: the majority of cells contain fewer than 200 residents per hectare, while a small number of high outliers capture the contrast between Jaipur’s compact historic core and its more dispersed periphery.
 
-1. Go to the `_bookdown.yml` file and make sue that that you have this line of code: `output_dir: docs` (it should be there)
-1. In the same file make sure your `book_filename` doesn't have any spaces use `-` or `_` e.g. `CASA-Thesis`
-1. Go to the `_output.yml` file and change the `edit` argument to `YOURREPO/edit/main/%s`, here it's `https://github.com/andrewmaclachlan/CASA-MSc-thesis/edit/main/%s`
-1. Build your book locally, close the preview window
-1. Save, stage changes, commit and then push to GitHub
-1. On your GitHub repository > settings > GitHub pages > select the source as main and the folder as docs
-1. Make sure you build your `.pdf` and then your `gitbook` for the latest `.pdf` to be a download option on the website.
+
+
+
+
+
+
+```{r 04RE-GHSL-pop, echo=FALSE, out.width="98%", fig.align='center', fig.cap="GHSL vs MGWR Population Distribution (per hectare) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_GHSL_compare.png'))
+```
+
+Notable differences also emerge. The MGWR estimates exhibit a sharper spike at very low values, which largely reflects cells excluded under the residential mask rather than genuinely low-populated areas. In contrast, GHSL produces a smoother distribution, with more cells assigned to the mid-density range (200–400). At the high end, MGWR shows a heavier tail, with a greater number of cells exceeding 1,000 residents per hectare.
+
+Overall, the two datasets align in their general distributional shape, but MGWR produces a more polarised outcome—many empty or low-population cells alongside a concentration of very dense ones. This reflects the methodological choice to restrict disaggregation strictly to residential built-up areas using locally estimated weights, whereas GHSL relies on a global building-volume proxy that spreads population more evenly. The latter approach allows consistent disaggregation worldwide, but it also has limitations: uniform global rules may overlook local land-use distinctions, accuracy depends on the resolution of built-up inputs, and recent changes—especially in rapidly growing or informal settlements—may be underrepresented. For these reasons, GHSL provides a useful benchmark for comparison, but should not be regarded as ground truth at the local scale.
+
+### Explanatory Variables Shaping Population Density in the MGWR
+
+The MGWR results indicate that explanatory variables influence population density at different spatial scales. The intercept and light intensity operate at a local scale (bandwidth = 43 wards), POI kernel density at a regional scale (98 wards), and illuminated building volume density at a global scale (227 wards). This range demonstrates that population patterns are shaped simultaneously by neighbourhood-level dynamics and broader structural forces.
+
+The spatial distribution of coefficients further underscores these heterogeneous effects (Figure \@ref(fig:04RE-MGWR-coeff)):
+
+-   **Illuminated Building Volume Density (Global, BW = 227):** Coefficients are consistently negative across the city (mean = −0.516, range = −0.544 to −0.483, SD = 0.013). Large contiguous areas remain significant after correction, revealing a robust and spatially stable inverse relationship: higher illuminated volumes are systematically associated with lower population density. Significant clusters are most apparent in northern and western wards, as well as some peripheral zones.
+
+-   **Nighttime Lights Intensity (Local, BW = 43):** Coefficients vary in direction (mean = 0.298, range = −0.238 to 1.054, SD = 0.273), with positive patches in eastern and peripheral areas and negative values in parts of the centre. Only small pockets remain significant after correction, reflecting a highly localized and heterogeneous effect.
+
+-   **POI Kernel Density (Regional, BW = 98):** Coefficients are generally positive (mean = 0.192, range = 0.061 to 0.545, SD = 0.144). Strong effects are concentrated along the southern and eastern corridors, where dense POI clusters coincide with higher residential density. Central wards and parts of the periphery show non-significant values, highlighting the uneven influence of POI kernel density.
+
+-   **Intercept (Local, BW = 43):** Local intercepts vary from negative to positive (mean = 0.230, range = −0.357 to 0.771, SD = 0.322). Significant estimates cluster around the city core and isolated edge wards, indicating baseline differences in population density not captured by the current covariates.
+
+```{r 04RE-MGWR-coeff, echo=FALSE, out.width="90%", fig.align='center', fig.cap="Coefficients Estimates for Explanatory Variables in the MGWR model: illuminated building volume density, nighttime lights intensity, POI kernel density and intercept. For each variable, the left panel shows raw parameter estimates, the middle panel displays significant and non-significant estimates without correction (non-significant in grey), and the right panel presents estimates after correction for multiple dependent hypothesis tests, where only statistically significant coefficients remain colored (red = negative, blue = positive)."}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_mgwr_all_significant_coeffs.png'))
+```
+
+Key findings:
+
+-   Direction: Illuminated building volume density exerts a consistent negative effect, while POI kernel density shows a strong positive effect. Light intensity and the intercept display more fragmented influences.
+-   Scale: Explanatory factors operate across levels, from local (intercept, light intensity) to regional (POI kernel density) and global (illuminated volume).
+-   Significance: Illuminated volume shows the most robust and widespread effect, followed by POI kernel density; light intensity and the intercept are significant only in scattered clusters.
+
+To sum up, the MGWR results demonstrate that population density in Jaipur is driven by both heterogeneous directions and multi-scale processes. The model highlights robust citywide effects of illuminated building volume, regionally concentrated influence of POI kernel density, and more localized variations linked to light intensity and intercept terms. This underlines the value of a multi-scale approach for decomposing urban population patterns.
+
+## Response to RQ1: Where Economic Activity levels are High – Economic Activity Index (EAI)
+
+### Correlation among Input Variables
+
+Before conducting PCA, the correlations among the ten selected indicators aggregated to 500 m hexagon cells were examined. Figure \@ref(fig:04RE-pca-matrix) presents the correlation matrix.
+
+The results show that population density, built-up density, road density, and nighttime lights are strongly and positively correlated ($r \approx 0.6–0.8$), indicating that they capture overlapping dimensions of urban development intensity and economic activity. In contrast, NDVI is strongly and negatively correlated with these variables, reflecting the trade-off between vegetation cover and built-up intensity. Large transport stations (e.g. airports) display only weak negative correlations with activity-related indicators, consistent with their distinct spatial separation from daily economic clusters.
+
+These correlations indicate substantial shared variation, justifying PCA to condense them into latent dimensions while retaining contrasting signals (e.g. NDVI, transport stations) that help differentiate patterns.
+
+
+```{r 04RE-pca-matrix, echo=FALSE, out.width="98%", fig.align='center', fig.cap=" PCA Variables Correlation Matrix "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_correlation_heatmap_full_log_data.png'))
+```
+
+
+
+### PCA Results
+
+The PCA results show that the first two components capture most of the shared variance among the indicators. The scree plot (Figure \@ref(fig:04RE-pca-scree)) indicates a sharp drop after the first component, with eigenvalues of 4.3 for PC1 and 1.6 for PC2, together explaining 58.7% of the total variance. This justifies focusing on PC1 and PC2 for interpretation and mapping.
+
+The loadings (Table \@ref(tab:pca-loadings)) highlight distinct roles of the indicators. PC1 (42.7% of variance) is shaped by strong positive contributions from population density, built-up density, road density, POI, and nighttime lights, with NDVI and large transport polygons contributing negatively. In practical terms, PC1 can be interpreted as a dimension of economic activity intensity: hexagons scoring highly are characterised by dense built-up form, higher population and road density, many POI, and bright nighttime lights, combined with low vegetation cover and little presence of large transport infrastructure. This configuration corresponds closely to the empirical notion of concentrated urban economic activity. Therefore, PC1 will be chosen to construct the Economic Activity Index (EAI).
+
+PC2 (16.0% of variance) reflects a secondary dimension. It contrasts transport station points and office/shop POI against NDVI and large transport polygons, suggesting that this component differentiates localised commercial clusters from greener or large-scale infrastructural areas. In practice, PC2 highlights variations in the type of economic built environment, rather than the direct economic intensity.
+
+The biplot (Figure \@ref(fig:04RE-pca-biplot)) reinforces these relationships, showing built-up, population, road, and NTL vectors aligned, while NDVI and large transport polygons point in the opposite direction. Rather than isolated pairwise correlations, this configuration shows how PCA integrates divergent spatial signals—ranging from urban development and everyday POI density to green space and infrastructural scale—into interpretable components. These components reveal latent dimensions that organize Jaipur’s economic geography, offering a structured lens on urban heterogeneity.
+
+Thus, the PCA enables a meaningful reduction in dimensionality, distilling complex spatial-economic patterns into interpretable components. PC1 captures the primary axis of economic activity intensity, while PC2 reflects a secondary contrast in urban morphology. Together, these two components provide the foundation for constructing the EAI and guiding subsequent cluster analysis.
+
+
+
+
+```{r 04RE-pca-scree, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" PCA Scree Plot "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_scree_plot_eigenvalues.png'))
+```
+
+
+```{r 04RE-pca-biplot, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" PCA Biplot "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_pca_biplot.png'))
+```
+
+
+
+```{r table-narrower4, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{4pt}")
+```
+
+
+```{r pca-loadings, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse); library(kableExtra); library(readxl); library(here)
+df <- read_excel(here("tables","pc_loadings_merged.xlsx")) |>
+  mutate_all(~ replace_na(.x, "")) |>
+  mutate(
+    `PC1 Loading` = as.numeric(`PC1 Loading`),
+    `PC2 Loading` = as.numeric(`PC2 Loading`)
+  ) |>
+  mutate(
+    `PC1 Loading` = round(`PC1 Loading`, 3),
+    `PC2 Loading` = round(`PC2 Loading`, 3)
+  )
+
+if (knitr::is_latex_output()) {
+  df |>
+    kbl(
+      booktabs = TRUE,
+      longtable = TRUE,
+      escape = FALSE,
+      caption = "Principal Component Loadings for Indicators",
+      align = c(
+        "p{0.40\\linewidth}",  # Variable - 左对齐
+        ">{\\raggedleft\\arraybackslash}p{0.30\\linewidth}",  # PC1 Loading - 右对齐
+        ">{\\raggedleft\\arraybackslash}p{0.30\\linewidth}"   # PC2 Loading - 右对齐
+      ),
+      digits = 3
+    ) |>
+    kable_styling(position="center", latex_options="repeat_header", font_size=9) |>
+    row_spec(0, bold=TRUE)
+} else {
+  df |>
+    kbl(escape=FALSE, caption="Principal Component Loadings for Indicators", 
+        digits = 3, align = c("l", "r", "r")) |>
+    kable_styling(full_width=FALSE, position="center") |>
+    column_spec(1, width="15em") |>
+    column_spec(2, width="8em") |>
+    column_spec(3, width="8em") |>
+    row_spec(0, bold=TRUE)
+}
+```
+
+
+```{r table-reset4, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{6pt}")
+```
+
+
+
+### Spatial Patterns of Economic Activity
+
+Built on the first principal component (PC1), an Economic Activity Index (EAI) was mapped across 500 m hexagonal grids (Figure \@ref(fig:04RE-eai)). The resulting surface shows a continuous gradient of economic intensity across Jaipur. Highest values concentrate in the historic core and along major built-up corridors, while intensity declines progressively toward the periphery. Very low values appear in the northeast around mountainous and green areas such as Nahargarh and along city edges, where boundary truncation may accentuate discontinuities. This gradient broadly mirrors the distribution of population density and built-up extent, reinforcing the interpretation of PC1 as a proxy for urban economic activity.
+
+While the EAI emphasises a smooth core–periphery gradient, k-means clustering of PC1–PC2 scores (k = 3) reveals discrete structural groupings within the city (Figure \@ref(fig:04RE-eai-cluster), Figure \@ref(fig:04RE-eai-cluster-cate) and Figure \@ref(fig:04RE-eai-cluster-spa)):
+
+-   **Cluster 1 :** localised high-activity zones, often aligned with secondary centres and transport-accessible sub-districts.
+-   **Cluster 2 :** the bulk of the built-up fabric, representing medium-intensity areas with balanced but not extreme economic activity.
+-   **Cluster 3 :** peripheral low-activity zones, concentrated in hilly or green terrain and forming a distinct ecological type.
+
+These two perspectives are complementary: the EAI captures the overall intensity gradient, while clustering differentiates categorical spatial types. This dual representation provides both a citywide overview of economic activity and the identification of distinct functional zones within Jaipur.
+
+
+```{r 04RE-eai, echo=FALSE, out.width="98%", fig.align='center', fig.cap=" Economic Activity Index (EAI) Distribution "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_eai_distribution_map.png'))
+```
+
+
+
+```{r 04RE-eai-cluster, echo=FALSE, out.width="98%", fig.align='center', fig.cap=" K-Means Clustering Results for EAI "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_kmeans_clustering_results.png'))
+```
+
+
+```{r 04RE-eai-cluster-cate, echo=FALSE, out.width="98%", fig.align='center', fig.cap=" Composition of K-Means Clusters for EAI. Legend categories reflect z-score-based classification of EAI values."}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_cluster_vs_epi_distribution.png'))
+```
+
+
+
+
+```{r 04RE-eai-cluster-spa, echo=FALSE, out.width="98%", fig.align='center', fig.cap=" K-Means Clusters Spatial Distribution for EAI "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','04RE_kmeans_clusters_map.png'))
+```
+
+
+
+
+
+## Response to RQ2: GEE – Jaipur Urban Activities Analysis App
+
+To address the second research question, the outputs of the MGWR-based population disaggregation and the Economic Activity Index (EAI) were embedded into an interactive Google Earth Engine (GEE) web application (Figure \@ref(fig:04RE-geeapp)). Without delving into technical implementation, the app is presented as a proof of concept, showing how analytical outputs can be translated into a transparent and accessible tool for digital planning. . By allowing stakeholders to explore and interpret spatial data directly in a browser, the app lowers the technical barriers posed by conventional GIS software and supports more inclusive, evidence-based dialogue.
+
+
+
+The application demonstrates three ways in which results can be mobilised for planning:
+
+-   **Comparing neighbourhood populations:** Users can draw custom polygons and instantly obtain population counts and histograms. This flexibility allows comparisons beyond ward boundaries, supporting discussions of uneven population densities and local service demand.
+-   **Highlighting economic contrasts:** Ward-level aggregation ranks areas by their average EAI, displaying the top ten as a clear entry point for identifying economic hotspots and areas of relative deprivation. This ranking function transforms abstract indices into a straightforward narrative of concentration and disparity.
+-   **Interrogating indicator contributions:** Users can switch between NDVI, nighttime lights, and road density layers to see how each indicator contributes to the composite EAI. This transparency enables scrutiny of the underlying assumptions and encourages informed debate on the drivers of urban economic activity.
+
+These functions transform static analytical results into an interactive platform that is meaningful for both experts and non-experts. For planners, the app provides rapid access to disaggregated data without specialised software; for communities, it renders complex indicators into intuitive visualisations. In this way, the Jaipur Urban Activities Analysis App demonstrates how geospatial analysis, when coupled with cloud-based dissemination, can bridge the gap between technical research and public participation.
+
+```{r float-barrier-gee, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\FloatBarrier")
+```
+
+```{r 04RE-geeapp, echo=FALSE, fig.show='hold', fig.ncol=2, out.width='48%', fig.align='center', fig.pos='H', fig.cap='Screenshots of the Interactive Google Earth Engine (GEE) Web Application Developed for This Study. Access link in GitHub repo.', fig.subcap=c('Application home page','Polygon-based population comparison','Ward-based EAI aggregation','Variable distribution mapping (nighttime lights)')}
+knitr::include_graphics(c(
+  here::here("thesis_images","04RE_geeapp_01.png"),
+  here::here("thesis_images","04RE_geeapp_02.png"),
+  here::here("thesis_images","04RE_geeapp_03.png"),
+  here::here("thesis_images","04RE_geeapp_04.png")
+))
+```
+
+The findings across RQ1 and RQ2 demonstrate that remote sensing and open data can be effectively harnessed to estimate urban population distribution and economic activity in Jaipur, and that these outputs can be implemented into an accessible web application. Together, the analyses establish both methodological feasibility in a data-scarce context and practical relevance through interactive dissemination. Building on these results, the following Discussion reflects on their implications, limitations, and broader significance for digital urban planning.

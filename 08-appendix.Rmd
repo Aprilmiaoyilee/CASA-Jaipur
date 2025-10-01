@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 ```{=latex}
 \addcontentsline{toc}{chapter}{Bibliography}
@@ -5,33 +10,146 @@
 ```
 # Appendix A  Research log {-}
 
+
+
 ```{=latex}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 ```
 
-## subsection {.unlisted .unnumbered}
-
-### sub sub section {.unlisted .unnumbered}
 
 ```{r researchlog, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(readxl)
-library(fs)
+library(here)
 
-read_excel(here("tables","research_log.xlsx"))%>%
-  arrange(Date) %>% # i.e. alphabetical order by Term
-  knitr::kable(booktabs = TRUE)%>% # booktab = T gives us a pretty APA-ish table
-  kable_styling(position = "center")%>%
-  row_spec(.,
-  row=0,
-  bold = TRUE)
+research_log <- read_excel(here("tables","miaoyi_log.xlsx"))
+
+if (knitr::is_latex_output()) {
+  # —— PDF（LaTeX）分支：可跨页 + 定宽自动换行 ——
+  research_log %>%
+    kableExtra::kbl(booktabs = TRUE, longtable = TRUE, escape = FALSE) %>%
+    kableExtra::kable_styling(
+      position = "center",
+      latex_options = c("repeat_header","scale_down") # longtable 本身非浮动，不需要 hold_position
+    ) %>%
+    kableExtra::column_spec(1, width = "3cm") %>%   # 第一列
+    kableExtra::column_spec(2, width = "10cm") %>%  # 文字多的列，设定宽度→自动换行
+    kableExtra::row_spec(0, bold = TRUE)
+} else {
+  # —— HTML 分支：限制表宽 + CSS 换行 ——
+research_log %>%
+    kableExtra::kbl(escape = FALSE) %>%
+    kableExtra::kable_styling(full_width = FALSE, position = "center") %>%
+    kableExtra::column_spec(2, width = "30em",
+      extra_css = "word-wrap:break-word; white-space:normal;") %>%
+    kableExtra::row_spec(0, bold = TRUE)
+}
+
+```
+# Appendix B POI Kernel Density Correlation Matrix in MGWR {-}
+
+
+```{r 08Ab-mgwr-kde-matrix, echo=FALSE, out.width="90%", fig.align='center', fig.cap="Heatmap of Pearson Correlations between POI Kernel Density and Ward Population Counts across KDE Bandwidths (Jaipur City, Residential Areas Only) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','Ab_jaipur_all_poi_correlation_heatmap.png'))
 ```
 
-`r if (knitr:::is_latex_output()) '
-# Appendix B  Proposal {.unlisted .unnumbered}
-'`
+```{r 08Ab-mgwr-kde-pick, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" Bandwidth-Sensitive Correlation Trends between POI Kernel Density and Ward Population Counts (Jaipur City, Residential Areas Only)"}
+library(here)
+knitr::include_graphics(here::here('thesis_images','Ab_jaipur_all_poi_correlation_trends.png'))
+```
+
+
+# Appendix C Codes for Transformation Steps in MGWR Population Disaggregation {-}
+
+```{python, eval=FALSE, python.reticulate=FALSE, attr.source='.numberLines', tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+# now this time this gpd is already have predictions of 
+#logged grid-level population density
+# in df[Predicted_log_Y]
+df = gpd.read_file('data/cleaned/grid_data_for_weights_mgwr03.geojson')
+```
+
+```{python, eval=FALSE, python.reticulate=FALSE, attr.source='.numberLines', tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+#--- Step 2: Defining parameters and identifying areas ---
+
+# Parameters for weighting
+GAMMA = 0.5  # Softmax sharpness: >1 sharper, <1 smoother
+
+ALPHA = 0.5  # Power transform for smoothing: <1 compresses high values
+
+BASE_WEIGHT_UNINHABITED = 1e-9 # A very small base weight for 
+#non-residential areas for visulisation, but does not 
+#contribute to population as the remainder function 
+#will not allocate any population to these areas.
+
+WINSOR_THRESHOLD = 0.99 # Percentile to cap extreme weights
+
+# Define inhabited vs. uninhabited areas based on a key variable
+# Using 'illum_vol_density' is a robust choice.
+uninhabited_mask = (df['illum_vol_density'] == 0)
+habited_mask = ~uninhabited_mask
+
+```
+
+```{python, eval=FALSE, python.reticulate=FALSE, attr.source='.numberLines', tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+# Introduce a smoothing parameter epsilon in the Softmax function
+#--- Step 3: Calculating preliminary weights (w_pt) ---
+
+def softmax_on_scaled_z(z_vals, gamma=1.0):
+    """Calculates softmax on min-max scaled values."""
+    # ensure working with a NumPy array
+    z = np.asarray(z_vals, dtype=float)
+    # if all are nan, return an array of nans
+    if np.isnan(z).all():
+        return np.full_like(z, np.nan)
+    # compute min and max ignoring nan
+    z_min = np.nanmin(z)
+    z_max = np.nanmax(z)
+    # if constant, return uniform weights
+    if z_max == z_min:
+        return np.full_like(z, 1.0 / z.size)
+    # min–max scale
+    z_scaled = (z - z_min) / (z_max - z_min)
+    exps = np.exp(gamma * z_scaled)
+    return exps / np.nansum(exps)
+
+# a. Calculate softmax weights for HABITED areas
+df['w_raw'] = np.nan
+df.loc[habited_mask, 'w_raw'] = df[habited_mask].groupby('Id')
+['Predicted_log_Y'].transform(
+    lambda z: softmax_on_scaled_z(z.values, gamma=GAMMA)
+)
+
+# b. Apply alpha power transform to smooth the raw weights
+df['w_pt'] = np.nan
+df.loc[habited_mask, 'w_pt'] = df.loc[habited_mask, 'w_raw'] ** ALPHA
+
+# c. Assign a tiny base weight to UNINHABITED areas
+df.loc[uninhabited_mask, 'w_pt'] = BASE_WEIGHT_UNINHABITED
+
+
+```
+
+
+```{python, eval=FALSE, python.reticulate=FALSE, attr.source='.numberLines', tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+#-- Step 4: Normalizing, winsorizing, and finalizing weights ---
+
+# a. First normalization to get initial final weights
+df['w_initial'] = df.groupby('Id')['w_pt'].
+transform(lambda w: w / w.sum())
+
+# b. Winsorize (trim) the weights to handle outliers
+threshold = df['w_initial'].quantile(WINSOR_THRESHOLD)
+df['w_trim'] = np.minimum(df['w_initial'], threshold)
+
+# c. Final re-normalization to get the final weights for disaggregation
+df['w_final_trim'] = df.groupby('Id')['w_trim'].
+transform(lambda w: w / w.sum())
+```
+
+
 
 ```{=latex}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}

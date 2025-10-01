@@ -1,0 +1,38 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Existing Land Use Map of Jaipur Urbanizable Area 2017. Source: Jaipur Master Development Plan 2025.}}{10}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Multi-temporal Classification of JMC Built-up Presence. Source: UN-Habitat.}}{11}{figure.caption.9}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Methodology Flowchart }}{19}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Location of Jaipur City. Source: UN-Habitat. }}{21}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces MGWR Model Variables Distribution (after log and z-score transformation) }}{25}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces MGWR model Variables Distribution Histogram (after log and z-score transformation) }}{25}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces PCA Variables Distribution (after log and z-score transformation) }}{28}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces PCA Variables Distribution Histogram (after log and z-score transformation) }}{29}{figure.caption.15}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces MGWR Residuals Distribution Map}}{37}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Residual Diagnostics: Residual–fitted and Q–Q plot}}{37}{figure.caption.17}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Residual–fitted}}}{37}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Q–Q plot}}}{37}{subfigure.2.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces MGWR Local Multicollinearity Test using Condition Number }}{38}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ward-level Population Distribution vs MGWR-derived Population Distribution}}{39}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces GHSL vs MGWR Population Distribution (per hectare) }}{40}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Coefficients Estimates for Explanatory Variables in the MGWR model: illuminated building volume density, nighttime lights intensity, POI kernel density and intercept. For each variable, the left panel shows raw parameter estimates, the middle panel displays significant and non-significant estimates without correction (non-significant in grey), and the right panel presents estimates after correction for multiple dependent hypothesis tests, where only statistically significant coefficients remain colored (red = negative, blue = positive).}}{43}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces PCA Variables Correlation Matrix }}{45}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces PCA Scree Plot }}{47}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces PCA Biplot }}{49}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Economic Activity Index (EAI) Distribution }}{51}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces K-Means Clustering Results for EAI }}{52}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Composition of K-Means Clusters for EAI. Legend categories reflect z-score-based classification of EAI values.}}{52}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces K-Means Clusters Spatial Distribution for EAI }}{53}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Screenshots of the Interactive Google Earth Engine (GEE) Web Application Developed for This Study. Access link in GitHub repo.}}{55}{figure.caption.29}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Application home page}}}{55}{subfigure.14.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Polygon-based population comparison}}}{55}{subfigure.14.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Ward-based EAI aggregation}}}{55}{subfigure.14.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Variable distribution mapping (nighttime lights)}}}{55}{subfigure.14.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Spatial Distribution of four Population Overestimation Cases in Jaipur City (Basemap: Google).}}{58}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Spatial Distribution of four Population Underestimation Cases in Jaipur City (Basemap: Google).}}{58}{figure.caption.31}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Heatmap of Pearson Correlations between POI Kernel Density and Ward Population Counts across KDE Bandwidths (Jaipur City, Residential Areas Only) }}{79}{figure.caption.35}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Bandwidth-Sensitive Correlation Trends between POI Kernel Density and Ward Population Counts (Jaipur City, Residential Areas Only)}}{80}{figure.caption.36}%

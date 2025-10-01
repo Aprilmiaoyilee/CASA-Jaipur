@@ -1,40 +1,235 @@
-# Equations and direct quotes
+# Methodology
 
-This section will focus on equations and direct quotes
+Building on the literature review presented in Chapter 2, this study employs a two-stage analytical framework to estimate urban activities in Jaipur City, utilising remote sensing and open data. First, MGWR is used to model ward-level population patterns based on built environment indicators, with results disaggregated to a 100 m resolution using a Softmax-based allocation. Second, PCA combines population estimates with other spatial indicators to construct an Economic Activity Index (EAI). These outputs are then integrated into a GEE interactive mapping application, enabling users to explore and apply the results in a collaborative digital planning context. Figure \@ref(fig:03ME-flowchart) summarises the whole workflow.
 
-## Equations {#equations}
+```{r 03ME-flowchart, echo=FALSE, out.width="80%", fig.align='center', fig.cap="Methodology Flowchart "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_flowchart.png'))
+```
 
-You need to include equations with some LaTeX. The easiest way to do this is to use an online tool such as: https://latex.codecogs.com/eqneditor/editor.php. It can be a real pain to get these right, but once you've worked it out it will be much easier than dealing with word equation editor. 
+## Study Area
+
+This study focuses on Jaipur City, the political and economic centre of Rajasthan and one of the 100 cities nominated under India’s Smart Cities Mission. While the wider Jaipur Development Authority (JDA) boundary covers a much larger territory, its constituent areas are defined by heterogeneous spatial units—wards in the city, but villages and small towns in the surrounding region; as a result, the combination of this mismatch and the absence of recent high-granularity population data for the non-urban areas makes it difficult to assemble a consistent dataset at the resolution required for this analysis. In contrast, the municipal area offers a uniform ward-based framework, enabling demographic, remote sensing, and open spatial datasets to be integrated on the same spatial level. Moreover, by focusing on this city boundary, the results directly align with ongoing municipal-level digital planning initiatives, where outputs can inform infrastructure monitoring, mobility management, and public service optimisation.
+
+The analysis begins at the ward level, using the 250 wards managed by the Jaipur Municipal Corporation (JMC) as the basic spatial units. According to administrative estimates released by JDA in 2020, these wards collectively host a residential population of 3,053,908. Since the last official Indian census was conducted in 2011, this JDA estimates provide the most recent demographic baseline.
+
+Jaipur’s urban morphology comprises a dense, historic walled city at its core, encircled by peripheral areas that have expanded rapidly along major transport corridors. Together, these patterns combine compact heritage neighbourhoods with low-density, recently urbanised wards, creating a varied setting for analysing spatial heterogeneity in population distribution and economic activity.
+
+The study area is shown in Figure \@ref(fig:03ME-location), where the JMC boundary is highlighted alongside internal ward divisions. This municipal extent therefore defines the spatial scope for all subsequent modelling and analysis steps.
+
+```{r 03ME-location, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" Location of Jaipur City. Source: UN-Habitat. "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_location.jpg'))
+```
+
+## Data Sources and Preparation
+
+The datasets used in this study were selected and prepared to match the requirements of the two main analytical stages: the MGWR–dasymetric hybrid approach for population disaggregation, and the PCA for constructing the EAI. Most datasets were obtained from open-access platforms, primarily the Google Earth Engine (GEE) Data Catalog and OpenStreetMap (OSM), except for the Jaipur City boundary and ward-level population data, which were provided by the Malaviya National Institute of Technology (MNIT) Jaipur.
+
+### Data for MGWR
+
+The **dependent variable** in the MGWR model is **ward-level residential population density**, derived from JDA population estimates from 2020. Here, residential population refers to where people live, in contrast to ambient population, which captures where people may be present throughout the day (e.g. workplaces, shopping areas, or transit hubs). Accordingly, all explanatory variables were masked to residential built-up areas, so that predictors reflect residential locations rather than other land uses [@pesaresiAdvancesGlobalHuman2024a]. Detailed data sources are provided in Table \@ref(tab:mgwr-variables). 
+
+The selection of **explanatory variables** followed the four broad categories of ancillary data commonly used in population disaggregation—land cover, nighttime lights, infrastructure, and environmental factors [@qiuDisaggregatingPopulationData2022]. Given that environmental variables such as elevation were excluded, the final set includes only the first three categories, all of which exhibited spatial patterns closely aligned with population distribution, with highest values concentrated in the historic walled city (Figure \@ref(fig:03ME-mgwr-feature-maps) and Figure \@ref(fig:03ME-mgwr-feature-his)):
+
+1.  **Illuminated Building Volume Density** — Estimated by multiplying the height of each residential built-up pixel from the GHSL settlement dataset by its area, then masking to areas illuminated in VIIRS nighttime lights imagery. In practice, all residential built-up areas in Jaipur were found to be illuminated, making additional filtering unnecessary. Heights were binned into ranges (e.g. \<3 m, 3–6 m) and assigned midpoint values (e.g. 1.5 m, 4.5 m). This midpoint approach introduces uncertainty, as the chosen values may not represent the actual height distribution, producing visible abrupt boundaries in the mapped volume variable.
+
+2.  **Nighttime Lights Intensity** — Derived from VIIRS annual composites, averaged across the study period and log-transformed (log(x + 1)) to reduce skewness.
+
+3.  **POI Kernel Density** — Calculated from  OSM amenities POI that are relevant to residential life rather than including office-based or other employment-related POI which reflect ambient rather than residential population. Eight amenity categories (i.e. education, entertainment, facilities, financial, healthcare, public service, sustenance, and transportation) were tested at ward level, but only sustenance, facilities and healthcare showed meaningful correlations with ward populations, so the others were excluded. The kernel bandwidth was set to 1600m because this value maximised the correlation between POI density and population counts. A detailed correlation matrix is provided in the Appendix.
+
+To improve model stability, both dependent and independent variables were transformed using log(x + 1), standardised to z-scores, and aggregated to the ward level before MGWR fitting. Also, all rasters were aligned to a 100 m grid and a common projection prior to modelling to ensure pixel-level consistency across datasets. Despite these preparations, the MGWR data stage has limitations. The exclusion of environmental factors such as elevation—despite substantial variation across wards—may reduce explanatory power. The use of midpoint values for height estimation can lead to artificial discontinuities in building volume, and the POI kernel density is dependent on the positional accuracy and completeness of OSM data.
+
+```{r table-narrower1, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{4pt}")
+```
+
+```{r mgwr-variables, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse); library(kableExtra); library(readxl); library(here)
+
+df <- read_excel(here("tables","MGWR_var.xlsx")) |>
+  mutate_all(~ replace_na(.x, ""))
+
+if (knitr::is_latex_output()) {
+  df |>
+    kbl(
+      booktabs = TRUE,
+      longtable = TRUE,
+      escape = FALSE,
+      caption = "MGWR Model Variables: Definitions, Details and Data Sources",
+      align = c(
+        "p{0.18\\linewidth}",  # Variable
+        "p{0.35\\linewidth}",  # Description
+        "p{0.20\\linewidth}",  # Details
+        "p{0.27\\linewidth}"   # Sources
+      )
+    ) |>
+    kable_styling(position="center", latex_options="repeat_header", font_size=8.8) |>
+    row_spec(0, bold=TRUE)
+} else {
+  df |>
+    kbl(escape=FALSE, caption="MGWR Model Variables: Definitions, Details and Data Sources") |>
+    kable_styling(full_width=FALSE, position="center") |>
+    column_spec(2, width="25em", extra_css="word-wrap:break-word; white-space:normal;") |>
+    column_spec(4, width="20em", extra_css="word-wrap:break-word; white-space:normal;") |>
+    row_spec(0, bold=TRUE)
+}
+```
+
+```{r table-reset1, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{6pt}")
+```
+
+```{r 03ME-mgwr-feature-maps, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" MGWR Model Variables Distribution (after log and z-score transformation) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_mgwr_feature_maps.png'))
+```
+
+```{r 03ME-mgwr-feature-his, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" MGWR model Variables Distribution Histogram (after log and z-score transformation) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_mgwr_trans_var.png'))
+```
+
+### Data for PCA
+
+The PCA stage combines residential population density, derived from the 100 m disaggregated raster produced by the MGWR–dasymetric process (converted to population density in km²), with a set of spatial indicators describing built environment characteristics and accessibility. Together, these indicators can indirectly reflect the presence of economic activity, as many have been used in prior studies to approximate metrics such as employment density [@barzinWhereAreAll2022a].While residential density is not a direct measure of economic activity, it reflects demand-side dynamics (where people live and consume), and its limitations are balanced by other indicators that capture supply-side and ambient factors such as workplaces, services, and infrastructure.
+
+All datasets (Table \@ref(tab:pca-variables)) were aggregated to a 500 m hexagonal grid (point spacing), transformed using log(x + 1) to reduce skewness, and standardised to z-scores before PCA input. NDVI was excluded from the log transformation because its values are already normalised to a fixed range. From the distribution maps (Figure \@ref(fig:03ME-pca-feature-maps) and Figure \@ref(fig:03ME-pca-feature-his)), these variables reveal a clear pattern of urban expansion from the walled city towards the west, with the eastern mountains acting as a natural barrier to urban growth.  
+
+The PCA indicators come from two main sources:
+
+1.  **Vector data from OSM** — Points (e.g. amenities), lines (e.g. road networks), and polygons (e.g. large transport stations such as the airport) were converted into density measures—counts, lengths, or areas per square kilometre—within each hexagon. For hexagons intersecting the municipal boundary, only the area inside the boundary was used to compute density, ensuring accurate representation in edge cells.
+
+2.  **Raster data from GEE** — Datasets such as NDVI and VIIRS NTL were averaged over time before aggregation to the 500 m grid. For sum-based measures (e.g. population, built-up area), values were divided by the actual area of each hexagon within the municipal boundary to avoid underestimation in partially covered cells.
+
+```{r table-narrower2, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{4pt}")
+```
+
+```{r pca-variables, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse); library(kableExtra); library(readxl); library(here)
+
+df <- read_excel(here("tables","PCA_var.xlsx")) |>
+  mutate_all(~ replace_na(.x, ""))
+
+if (knitr::is_latex_output()) {
+  df |>
+    kbl(
+      booktabs = TRUE,
+      longtable = TRUE,
+      escape = FALSE,
+      caption = "PCA Variables: Definitions, Details and Data Sources",
+      align = c(
+        "p{0.18\\linewidth}",  # Variable
+        "p{0.30\\linewidth}",  # Description
+        "p{0.25\\linewidth}",  # Details
+        "p{0.27\\linewidth}"   # Sources
+      )
+    ) |>
+    kable_styling(position="center", latex_options="repeat_header", font_size=8.8) |>
+    row_spec(0, bold=TRUE)
+} else {
+  df |>
+    kbl(escape=FALSE, caption="PCA Variables: Definitions, Details and Data Sources") |>
+    kable_styling(full_width=FALSE, position="center") |>
+    column_spec(2, width="25em", extra_css="word-wrap:break-word; white-space:normal;") |>
+    column_spec(4, width="20em", extra_css="word-wrap:break-word; white-space:normal;") |>
+    row_spec(0, bold=TRUE)
+}
+```
+
+```{r table-reset2, echo=FALSE, results='asis'}
+if (knitr::is_latex_output()) knitr::asis_output("\\setlength{\\tabcolsep}{6pt}")
+```
+
+```{r 03ME-pca-feature-maps, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" PCA Variables Distribution (after log and z-score transformation) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_indicator_maps.png'))
+```
+
+```{r 03ME-pca-feature-his, echo=FALSE, out.width="90%", fig.align='center', fig.cap=" PCA Variables Distribution Histogram (after log and z-score transformation) "}
+library(here)
+knitr::include_graphics(here::here('thesis_images','03ME_standardized_indicators_histograms.png'))
+```
+
+## Population Disaggregation: MGWR–Dasymetric Hybrid Approach
+
+In contexts where high-resolution population data are unavailable, combining statistical modelling with dasymetric mapping can improve the spatial accuracy of population estimates [@pajaresPopulationDisaggregationBuilding2021; @sapenaEmpiricRecommendationsPopulation2022]. In Jaipur, the absence of an official census since 2011 and reliance on JDA ward-level estimates from 2020 further necessitate such approaches, as they allow recent population values to be inferred at sufficient spatial granularity. In this study, the Multiscale Geographically Weighted Regression (MGWR) model was used to capture the spatially varying relationships between Jaipur ward-level residential population density and multiple environmental predictors, while the dasymetric mask constrained the disaggregation of population counts only to residential built-up areas.
+
+MGWR extends the traditional GWR framework by allowing not only regression coefficients to vary across space, but also the spatial scale at which each explanatory variable operates. This is achieved by estimating separate bandwidths for each variable, enabling the integration of predictors that influence population patterns over large spatial scales (e.g. regional accessibility) with those operating at finer scales (e.g. building volume density).
+
+Let:
+
+-   $P_w$ = ward-level residential population density
+-   $P_g$ = grid-level residential population density
+-   $V$ = illuminated building volume density
+-   $L$ = VIIRS nighttime light intensity
+-   $K$ = POI kernel density
+-   $V_g, L_g, K_g$ = corresponding variables at the grid level
+-   $w_g$ = adjusted weight for grid $g$ in ward $w$
+
+The ward-level MGWR model is:
 
 \begin{equation} 
-  p= h\frac{c}{\varrho}
-  (\#eq:test)
-\end{equation} 
+  \log(P_w + 1) = \beta_0(u,v) + \beta_V(u,v) \, V + \beta_L(u,v) \, L + \beta_K(u,v) \, K + \varepsilon
+  (\#eq:MWGRward)
+\end{equation}
 
-To reference this in the text we use: \@ref(eq:test)
+The MGWR was implemented in Python using the *mgwr* package, with ward centroids used to compute inter-ward distances. A Gaussian kernel was employed, and optimal bandwidths for each predictor were determined using the golden section search to minimise the corrected Akaike Information Criterion (AICc). All explanatory variables were masked to residential built-up areas, log-transformed as $\log(x+1)$, and standardised to z-scores prior to modelling.
 
-You can also test your code in your RMarkdown document using `$` e.g. $$p= h\frac{c}{\varrho}$$
+Ward-level MGWR coefficients were then applied to grid-level raster layers, producing 100 m resolution predictions:
 
-However, this won't generate an equation number and you can't cross reference it. But we can use this logic to define the parameters within the equation e.g. where $h$ is Plank's constant, $6.626 × 10^-34 Js$
+\begin{equation} 
+\widehat{\log(P_g + 1)} = \hat{\beta}_0(u,v) + \hat{\beta}_V(u,v) \, V_g + \hat{\beta}_L(u,v) \, L_g + \hat{\beta}_K(u,v) \, K_g
+  (\#eq:MWGRgrid)
+\end{equation}
 
-`$$` puts it on a new line, single `$` keeps it on the same line (in the text)
+These predictions are grid-level log-scale estimates ($\widehat{\log(P_g+1)}$). Because coefficients are ward-specific, we treat them as within-ward scores and, within each ward, convert them to disaggregation weights using min–max normalisation and a Softmax-based allocation with a smoothing transform (summing to 1), followed by $\alpha$-power shrinkage and 99th-percentile winsorisation. This balances the dominance of peak cells while preserving local contrasts. The code implementing this transformation is provided in the Appendix.
 
-## Block quotes (or direct quotes) {#quotes}
+Finally, the ward-level population totals were disaggregated to the 100 m grids according to these adjusted weights:
 
-You may wish to quote a large section from a source, to do this use a block quote. 
+\begin{equation} 
+P_g = \frac{w_g}{\sum_{g \in w} w_g} \times P_w
+  (\#eq:POPweights)
+\end{equation}
 
-Simply input a `>` before the text. For example ` > This is a quote`. 
+The resulting grid-level counts were integerised to ensure exact ward-level totals. The final output is a 100 m resolution residential population raster for Jaipur City.
 
-> "This is a direct quote" 
+## Economic Activity Index: Principal Component Analysis Approach
 
-You can also provide an attribution at the footer of the quote using `tufte::quote_footer()`, either a name or a reference. You'll need to install the `tufte` package to use this. For example, `> [include only r here] tufte::quote_footer('--- Joe Martin')` or ` > [include only r here] tufte::quote_footer('--- @xie2015')` 
+In the second analytical stage, multiple spatial indicators are integrated into a single measure of economic activity using Principal Component Analysis (PCA). PCA is widely applied in composite index construction for its ability to transform correlated inputs into independent components, allowing the main patterns of variation to be summarised while avoiding overweighting information repeated across indicators [@vyasConstructingSocioeconomicStatus2006a; @conlonMappingHumanVulnerability2020]. In contrast to equal weighting or expert judgement, PCA derives variable weights directly from the data, giving greater influence to indicators that contribute more to the shared variance [@brobyUsePrincipalComponents2022a].
 
-Giving...
+This approach is particularly suitable for this study. The selected spatial indicators—derived from built environment characteristics, accessibility measures, and other spatial variables linked to economic activity—are theoretically connected and empirically correlated based on reviewed literature, suggesting the presence of a common latent dimension. Retaining the first principal component (PC1) provides a data-driven way to capture the overall spatial intensity of economic activities without relying on manually assigned indicator weights.
 
-> `r tufte::quote_footer('--- Joe Martin')`
+PCA was applied to the standardised 500 m hexagon-level indicator matrix prepared in Section 3.2.2. PC1 was extracted based on the proportion of variance it explained and the interpretability of its loadings. The Economic Activity Index (EAI) for each hexagon $i$ was calculated as:
 
-> `r tufte::quote_footer('--- @xie2015')`
+\begin{equation} 
+  \text{EAI}_i = \frac{\text{PC1}_i - \mu_{\text{PC1}}}{\sigma_{\text{PC1}}}
+  (\#eq:EAI)
+\end{equation}
 
-Instead you could just include the reference at the end of the quote, using the same method to reference as we've seen before..e.g. `> "This is a direct quote" @xie2015, Equation \@ref(eq:test)`...giving 
+where $\mu_{\text{PC1}}$ and $\sigma_{\text{PC1}}$ are the mean and standard deviation of the PC1 scores across all hexagons. This standardisation ensures comparability across space. The EAI values were subsequently examined using K-means clustering to identify distinct patterns of economic activity.
 
-> "This is a direct quote" @xie2015 \@ref(eq:test)
+While PCA produces statistically optimal combinations of variables, its components are abstract and may not fully preserve the interpretability of the original measures and this trade-off is considered in the Discussion chapter.
+
+## Integration into GEE Web Application
+
+The population surface generated from the MGWR–dasymetric disaggregation and the hexagon-level Economic Activity Index (EAI) derived from the PCA stage were uploaded to the Google Earth Engine (GEE) asset repository. The population layer was provided as a raster, while the EAI was initially uploaded as a vector dataset and subsequently rasterised within GEE to support visualisation and ward-level aggregation. All assets were assigned public read permissions, enabling them to be accessed through their asset IDs.
+
+The interactive application was developed using the GEE JavaScript API, with three main functions:
+
+1.  **Polygon-based Population Comparison** – Users can draw two polygons within the study area to aggregate population counts and visualise the results as a histogram.
+2.  **Ward-based EAI Aggregation** – Users can aggregate the EAI by ward boundaries and view a ranked list of the top 10 wards, displaying official ward numbers and index values.
+3.  **Variable Distribution Mapping** – Users can view thematic maps showing the spatial distribution of variables contributing to the EAI, using consistent symbology and classification for comparability.
+
+Once the code was completed, the application was published directly from the GEE Code Editor as a shareable web app, allowing stakeholders to access and interact with the outputs without needing specialised GIS software.
+
+## Ethical Considerations
+
+All datasets used in this study are either openly accessible or provided under institutional permission. Their use complies with the relevant licensing terms and collaborative agreements.
+
+Potential privacy risks are mitigated by restricting the analysis to aggregated datasets, reporting population estimates at a 100 m grid resolution, and excluding any personally identifiable information. This resolution is sufficient for identifying broad spatial patterns while preventing the recognition of individual households or persons.
+
+Nevertheless, the use of volunteered geographic information (VGI)—specifically OSM—introduces potential biases due to uneven contributor coverage, positional inaccuracies, and varying temporal completeness. Such biases may affect the representativeness of the input indicators, which in turn could influence the population surface and the Economic Activity Index (EAI). Furthermore, making the outputs publicly available through a GEE application may result in areas with high population density or elevated EAI receiving disproportionate attention from policymakers, businesses, or other stakeholders. While increased visibility can support digital planning, it may also risk reinforcing spatial inequalities if interpreted without adequate socio-economic context.
+
+To address these concerns, this study documents all data sources, methodological choices, and limitations in detail, and reflects on these issues in the Discussion chapter. This transparency is intended to encourage responsible and context-aware use of the outputs in public planning and policy-making processes, while also filling critical data gaps in a data-scarce context and supporting planners with open-data-based, computational insights for more sustainable and inclusive urban development.

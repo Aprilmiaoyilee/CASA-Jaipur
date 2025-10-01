@@ -1,0 +1,83 @@
+---
+title: "Clean_bib"
+author: "Miaoyi LI"
+date: "2025-08-22"
+output: html_document
+---
+
+knitr::opts_chunk$set(echo = TRUE)
+
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+
+# Function to clean bib file by removing annotation fields
+clean_bib_file <- function(input_file, output_file) {
+  # Read file content with UTF-8 encoding
+  content <- readLines(input_file, encoding = "UTF-8")
+  
+  # Variables to track annotation field parsing
+  in_annotation <- FALSE
+  brace_count <- 0
+  cleaned_lines <- c()
+  
+  # Process each line
+  for (line in content) {
+    # Check if this line starts an annotation field
+    if (grepl("^\\s*annotation\\s*=", line)) {
+      in_annotation <- TRUE
+      # Count braces in this line
+      open_braces <- lengths(regmatches(line, gregexpr("\\{", line)))
+      close_braces <- lengths(regmatches(line, gregexpr("\\}", line)))
+      brace_count <- open_braces - close_braces
+      
+      # If annotation field ends on the same line
+      if (brace_count <= 0) {
+        in_annotation <- FALSE
+      }
+      next  # Skip this line
+    }
+    
+    # If we're inside an annotation field
+    if (in_annotation) {
+      # Update brace count
+      open_braces <- lengths(regmatches(line, gregexpr("\\{", line)))
+      close_braces <- lengths(regmatches(line, gregexpr("\\}", line)))
+      brace_count <- brace_count + open_braces - close_braces
+      
+      # If braces are balanced, annotation field ends
+      if (brace_count <= 0) {
+        in_annotation <- FALSE
+      }
+      next  # Skip this line
+    }
+    
+    # Keep this line
+    cleaned_lines <- c(cleaned_lines, line)
+  }
+  
+  # Write cleaned content to output file
+  writeLines(cleaned_lines, output_file, useBytes = TRUE)
+  
+  # Print completion message
+  cat("Cleaning completed!\n")
+  cat("Original file:", input_file, "\n")
+  cat("Cleaned file:", output_file, "\n")
+}
+
+# Execute cleaning process
+clean_bib_file("thesis_co.bib", "thesis_co_clean.bib")
+
+# Check cleaning results
+original_lines <- length(readLines("thesis_co.bib"))
+cleaned_lines <- length(readLines("thesis_co_clean.bib"))
+
+cat("\nCleaning Summary:\n")
+cat("Original file lines:", original_lines, "\n")
+cat("Cleaned file lines:", cleaned_lines, "\n")
+cat("Lines removed:", original_lines - cleaned_lines, "\n")
+```
+
