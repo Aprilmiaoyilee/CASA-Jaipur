@@ -4,36 +4,35 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Figures, tables, hosting GitBook | CASA dissertation using Bookdown</title>
+  <title>Chapter 4 Figures, tables, hosting GitBook | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India</title>
   <meta name="description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="generator" content="bookdown 0.21.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Figures, tables, hosting GitBook | CASA dissertation using Bookdown" />
+  <meta property="og:title" content="Chapter 4 Figures, tables, hosting GitBook | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="github-repo" content="andrewmaclachlan/CASA-MSc-thesis" />
+  <meta name="github-repo" content="Aprilmiaoyilee/CASA-Jaipur" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Figures, tables, hosting GitBook | CASA dissertation using Bookdown" />
+  <meta name="twitter:title" content="Chapter 4 Figures, tables, hosting GitBook | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India" />
   
   <meta name="twitter:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
   
 
 
 
-<meta name="date" content="2021-04-12" />
+<meta name="date" content="2025-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="equations-and-direct-quotes.html"/>
+<link rel="prev" href="methodology.html"/>
 <link rel="next" href="discussion.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -60,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -70,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -124,10 +123,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -180,29 +184,43 @@ div.csl-indent {
 <li class="chapter" data-level="1.10" data-path="bookdown-basics.html"><a href="bookdown-basics.html#writing-code"><i class="fa fa-check"></i><b>1.10</b> Writing code</a></li>
 <li class="chapter" data-level="1.11" data-path="bookdown-basics.html"><a href="bookdown-basics.html#package-reproducibility"><i class="fa fa-check"></i><b>1.11</b> Package reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="crossref.html"><a href="crossref.html"><i class="fa fa-check"></i><b>2</b> Cross referencing</a>
+<li class="chapter" data-level="2" data-path="LR.html"><a href="LR.html"><i class="fa fa-check"></i><b>2</b> Literature Review</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="crossref.html"><a href="crossref.html#chapters-or-sections"><i class="fa fa-check"></i><b>2.1</b> Chapters or sections</a></li>
-<li class="chapter" data-level="2.2" data-path="crossref.html"><a href="crossref.html#figures-tables-even-code-chunks"><i class="fa fa-check"></i><b>2.2</b> Figures, tables, even code chunks</a>
+<li class="chapter" data-level="2.1" data-path="LR.html"><a href="LR.html#digital-urban-planning-platforms-in-the-era-of-smart-cities"><i class="fa fa-check"></i><b>2.1</b> Digital Urban Planning Platforms in the Era of Smart Cities</a></li>
+<li class="chapter" data-level="2.2" data-path="LR.html"><a href="LR.html#urban-data-scarcity-challenges-from-the-global-south"><i class="fa fa-check"></i><b>2.2</b> Urban Data Scarcity: Challenges from the Global South</a></li>
+<li class="chapter" data-level="2.3" data-path="LR.html"><a href="LR.html#urban-development-and-digital-policy-in-india-and-jaipur"><i class="fa fa-check"></i><b>2.3</b> Urban Development and Digital Policy in India and Jaipur</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="crossref.html"><a href="crossref.html#figures"><i class="fa fa-check"></i><b>2.2.1</b> Figures</a></li>
-<li class="chapter" data-level="2.2.2" data-path="crossref.html"><a href="crossref.html#tables"><i class="fa fa-check"></i><b>2.2.2</b> Tables</a></li>
+<li class="chapter" data-level="2.3.1" data-path="LR.html"><a href="LR.html#national-context-indias-urbanisation-and-digital-agenda"><i class="fa fa-check"></i><b>2.3.1</b> National Context: India’s Urbanisation and Digital Agenda</a></li>
+<li class="chapter" data-level="2.3.2" data-path="LR.html"><a href="LR.html#city-context-jaipurs-urban-structure-and-spatial-heterogeneity"><i class="fa fa-check"></i><b>2.3.2</b> City Context: Jaipur’s Urban Structure and Spatial Heterogeneity</a></li>
+<li class="chapter" data-level="2.3.3" data-path="LR.html"><a href="LR.html#local-reality-digital-initiatives-and-data-limitations"><i class="fa fa-check"></i><b>2.3.3</b> Local Reality: Digital Initiatives and Data Limitations</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="crossref.html"><a href="crossref.html#citing-documents"><i class="fa fa-check"></i><b>2.3</b> Citing documents</a></li>
-<li class="chapter" data-level="2.4" data-path="crossref.html"><a href="crossref.html#citing-using-software"><i class="fa fa-check"></i><b>2.4</b> Citing using software</a></li>
-<li class="chapter" data-level="2.5" data-path="crossref.html"><a href="crossref.html#footnotes"><i class="fa fa-check"></i><b>2.5</b> Footnotes</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html"><i class="fa fa-check"></i><b>3</b> Equations and direct quotes</a>
+<li class="chapter" data-level="2.4" data-path="LR.html"><a href="LR.html#remote-sensing-and-open-data-for-digital-planning"><i class="fa fa-check"></i><b>2.4</b> Remote Sensing and Open Data for Digital Planning</a></li>
+<li class="chapter" data-level="2.5" data-path="LR.html"><a href="LR.html#existing-methods-for-estimating-urban-activities"><i class="fa fa-check"></i><b>2.5</b> Existing Methods for Estimating Urban Activities</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html#equations"><i class="fa fa-check"></i><b>3.1</b> Equations</a></li>
-<li class="chapter" data-level="3.2" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html#quotes"><i class="fa fa-check"></i><b>3.2</b> Block quotes (or direct quotes)</a></li>
+<li class="chapter" data-level="2.5.1" data-path="LR.html"><a href="LR.html#population-disaggregation"><i class="fa fa-check"></i><b>2.5.1</b> Population Disaggregation</a></li>
+<li class="chapter" data-level="2.5.2" data-path="LR.html"><a href="LR.html#modelling-economic-vitality"><i class="fa fa-check"></i><b>2.5.2</b> Modelling Economic Vitality</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="LR.html"><a href="LR.html#summary-for-literature-review"><i class="fa fa-check"></i><b>2.6</b> Summary for Literature Review</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i><b>3</b> Methodology</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methodology.html"><a href="methodology.html#study-area"><i class="fa fa-check"></i><b>3.1</b> Study Area</a></li>
+<li class="chapter" data-level="3.2" data-path="methodology.html"><a href="methodology.html#data-sources-and-preparation"><i class="fa fa-check"></i><b>3.2</b> Data Sources and Preparation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="methodology.html"><a href="methodology.html#data-for-mgwr"><i class="fa fa-check"></i><b>3.2.1</b> Data for MGWR</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methodology.html"><a href="methodology.html#data-for-pca"><i class="fa fa-check"></i><b>3.2.2</b> Data for PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="methodology.html"><a href="methodology.html#population-disaggregation-mgwrdasymetric-hybrid-approach"><i class="fa fa-check"></i><b>3.3</b> Population Disaggregation: MGWR–Dasymetric Hybrid Approach</a></li>
+<li class="chapter" data-level="3.4" data-path="methodology.html"><a href="methodology.html#economic-activity-index-principal-component-analysis-approach"><i class="fa fa-check"></i><b>3.4</b> Economic Activity Index: Principal Component Analysis Approach</a></li>
+<li class="chapter" data-level="3.5" data-path="methodology.html"><a href="methodology.html#integration-into-gee-web-application"><i class="fa fa-check"></i><b>3.5</b> Integration into GEE Web Application</a></li>
+<li class="chapter" data-level="3.6" data-path="methodology.html"><a href="methodology.html#ethical-considerations"><i class="fa fa-check"></i><b>3.6</b> Ethical Considerations</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html"><i class="fa fa-check"></i><b>4</b> Figures, tables, hosting GitBook</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#including-figures-and-tables"><i class="fa fa-check"></i><b>4.1</b> Including figures and tables</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#figures-1"><i class="fa fa-check"></i><b>4.1.1</b> Figures</a></li>
-<li class="chapter" data-level="4.1.2" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#tables-1"><i class="fa fa-check"></i><b>4.1.2</b> Tables</a></li>
+<li class="chapter" data-level="4.1.1" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#figures"><i class="fa fa-check"></i><b>4.1.1</b> Figures</a></li>
+<li class="chapter" data-level="4.1.2" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#tables"><i class="fa fa-check"></i><b>4.1.2</b> Tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#hosting-the-book"><i class="fa fa-check"></i><b>4.2</b> Hosting the book</a></li>
 </ul></li>
@@ -223,6 +241,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="appendix-a-research-log.html"><a href="appendix-a-research-log.html"><i class="fa fa-check"></i>Appendix A Research log</a></li>
+<li class="chapter" data-level="" data-path="appendix-c-research-log.html"><a href="appendix-c-research-log.html"><i class="fa fa-check"></i>Appendix C Research log</a></li>
 <li class="divider"></li>
 <li><a href="" target="blank"></a></li>
 
@@ -235,7 +254,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CASA dissertation using Bookdown</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India</a>
           </h1>
         </div>
 
@@ -243,19 +262,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figures-tables-hosting-gitbook" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Figures, tables, hosting GitBook</h1>
+<div id="figures-tables-hosting-gitbook" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Figures, tables, hosting GitBook<a href="figures-tables-hosting-gitbook.html#figures-tables-hosting-gitbook" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This section is going to focus including figures and creating tables</p>
-<div class="figure"><span id="fig:methodsflow"></span>
+<div class="figure"><span style="display:block;" id="fig:methodsflow"></span>
 <img src="general_images/example_flow.png" alt="Summary of methdological procedure for (a).... and (b)...." width="300pt" />
 <p class="caption">
 Figure 4.1: Summary of methdological procedure for (a)…. and (b)….
 </p>
 </div>
-<div id="including-figures-and-tables" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Including figures and tables</h2>
-<div id="figures-1" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Figures</h3>
+<div id="including-figures-and-tables" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Including figures and tables<a href="figures-tables-hosting-gitbook.html#including-figures-and-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="figures" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Figures<a href="figures-tables-hosting-gitbook.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To include the figure above use the code:</p>
 <p><code>knitr::include_graphics(here::here('general_images','example_flow.png'))</code></p>
 <p>within a code chunk. In the chunk options you can specify the width and figure captions e.g. </p>
@@ -267,26 +286,26 @@ Figure 4.1: Summary of methdological procedure for (a)…. and (b)….
 <li>Draw.io</li>
 </ol>
 </div>
-<div id="tables-1" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Tables</h3>
+<div id="tables" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Tables<a href="figures-tables-hosting-gitbook.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For creating tables i’d suggest creating either an excel file or <code>.csv</code> and then reading the data into R and using the <code>kabble</code> package to format it how you wish. The example below is from the abbreviations section</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="figures-tables-hosting-gitbook.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="figures-tables-hosting-gitbook.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb4-3"><a href="figures-tables-hosting-gitbook.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb4-4"><a href="figures-tables-hosting-gitbook.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb4-5"><a href="figures-tables-hosting-gitbook.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fs)</span>
-<span id="cb4-6"><a href="figures-tables-hosting-gitbook.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb4-7"><a href="figures-tables-hosting-gitbook.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="figures-tables-hosting-gitbook.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#read in data</span></span>
-<span id="cb4-9"><a href="figures-tables-hosting-gitbook.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&quot;tables&quot;</span>, <span class="st">&quot;abbreviations.xlsx&quot;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="figures-tables-hosting-gitbook.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Term) <span class="sc">%&gt;%</span> <span class="co"># i.e. alphabetical order by Term</span></span>
-<span id="cb4-11"><a href="figures-tables-hosting-gitbook.html#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># booktab = T gives us a pretty APA-ish table</span></span>
-<span id="cb4-12"><a href="figures-tables-hosting-gitbook.html#cb4-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">booktabs =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> </span>
-<span id="cb4-13"><a href="figures-tables-hosting-gitbook.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">position =</span> <span class="st">&quot;center&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="figures-tables-hosting-gitbook.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># any specifc row changes you want</span></span>
-<span id="cb4-15"><a href="figures-tables-hosting-gitbook.html#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_spec</span>(.,</span>
-<span id="cb4-16"><a href="figures-tables-hosting-gitbook.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">row=</span><span class="dv">0</span>,</span>
-<span id="cb4-17"><a href="figures-tables-hosting-gitbook.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">bold =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="figures-tables-hosting-gitbook.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="figures-tables-hosting-gitbook.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-3"><a href="figures-tables-hosting-gitbook.html#cb3-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb3-4"><a href="figures-tables-hosting-gitbook.html#cb3-4" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-5"><a href="figures-tables-hosting-gitbook.html#cb3-5" tabindex="-1"></a><span class="fu">library</span>(fs)</span>
+<span id="cb3-6"><a href="figures-tables-hosting-gitbook.html#cb3-6" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb3-7"><a href="figures-tables-hosting-gitbook.html#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="figures-tables-hosting-gitbook.html#cb3-8" tabindex="-1"></a><span class="co">#read in data</span></span>
+<span id="cb3-9"><a href="figures-tables-hosting-gitbook.html#cb3-9" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&quot;tables&quot;</span>, <span class="st">&quot;abbreviations.xlsx&quot;</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="figures-tables-hosting-gitbook.html#cb3-10" tabindex="-1"></a>  <span class="fu">arrange</span>(Term) <span class="sc">%&gt;%</span> <span class="co"># i.e. alphabetical order by Term</span></span>
+<span id="cb3-11"><a href="figures-tables-hosting-gitbook.html#cb3-11" tabindex="-1"></a>  <span class="co"># booktab = T gives us a pretty APA-ish table</span></span>
+<span id="cb3-12"><a href="figures-tables-hosting-gitbook.html#cb3-12" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">booktabs =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb3-13"><a href="figures-tables-hosting-gitbook.html#cb3-13" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">position =</span> <span class="st">&quot;center&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="figures-tables-hosting-gitbook.html#cb3-14" tabindex="-1"></a>  <span class="co"># any specifc row changes you want</span></span>
+<span id="cb3-15"><a href="figures-tables-hosting-gitbook.html#cb3-15" tabindex="-1"></a>    <span class="fu">row_spec</span>(.,</span>
+<span id="cb3-16"><a href="figures-tables-hosting-gitbook.html#cb3-16" tabindex="-1"></a>  <span class="at">row=</span><span class="dv">0</span>,</span>
+<span id="cb3-17"><a href="figures-tables-hosting-gitbook.html#cb3-17" tabindex="-1"></a>  <span class="at">bold =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -334,21 +353,21 @@ DTM
 </ul>
 <p>For example…
 </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="figures-tables-hosting-gitbook.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&quot;tables&quot;</span>, <span class="st">&quot;policy.xlsx&quot;</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="figures-tables-hosting-gitbook.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="figures-tables-hosting-gitbook.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># booktab = T gives us a pretty APA-ish table</span></span>
-<span id="cb5-4"><a href="figures-tables-hosting-gitbook.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">longtable =</span> T, <span class="at">booktabs =</span> T, </span>
-<span id="cb5-5"><a href="figures-tables-hosting-gitbook.html#cb5-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption =</span> <span class="st">&#39;Relevant influential international, metropolitan and local UHI and urban expansion policies, strategies and assessments (with publication date) referred to in this paper. * Denotes documents that lack specific UHI related policy but recognise the value of maintaining vegetation.&#39;</span>)<span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="figures-tables-hosting-gitbook.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">position =</span> <span class="st">&quot;center&quot;</span>, <span class="at">full_width =</span> T)<span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="figures-tables-hosting-gitbook.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># any specifc row changes you want</span></span>
-<span id="cb5-8"><a href="figures-tables-hosting-gitbook.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">row_spec</span>(.,</span>
-<span id="cb5-9"><a href="figures-tables-hosting-gitbook.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">row=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">8</span>, <span class="dv">18</span>),</span>
-<span id="cb5-10"><a href="figures-tables-hosting-gitbook.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">bold =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="figures-tables-hosting-gitbook.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">width =</span> <span class="st">&quot;14cm&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="figures-tables-hosting-gitbook.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">18</span>), <span class="at">hline_after =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="figures-tables-hosting-gitbook.html#cb4-1" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&quot;tables&quot;</span>, <span class="st">&quot;policy.xlsx&quot;</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="figures-tables-hosting-gitbook.html#cb4-2" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="figures-tables-hosting-gitbook.html#cb4-3" tabindex="-1"></a>  <span class="co"># booktab = T gives us a pretty APA-ish table</span></span>
+<span id="cb4-4"><a href="figures-tables-hosting-gitbook.html#cb4-4" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">longtable =</span> T, <span class="at">booktabs =</span> T, </span>
+<span id="cb4-5"><a href="figures-tables-hosting-gitbook.html#cb4-5" tabindex="-1"></a>               <span class="at">caption =</span> <span class="st">&#39;Relevant influential international, metropolitan and local UHI and urban expansion policies, strategies and assessments (with publication date) referred to in this paper. * Denotes documents that lack specific UHI related policy but recognise the value of maintaining vegetation.&#39;</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="figures-tables-hosting-gitbook.html#cb4-6" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">position =</span> <span class="st">&quot;center&quot;</span>, <span class="at">full_width =</span> T)<span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="figures-tables-hosting-gitbook.html#cb4-7" tabindex="-1"></a>  <span class="co"># any specifc row changes you want</span></span>
+<span id="cb4-8"><a href="figures-tables-hosting-gitbook.html#cb4-8" tabindex="-1"></a>    <span class="fu">row_spec</span>(.,</span>
+<span id="cb4-9"><a href="figures-tables-hosting-gitbook.html#cb4-9" tabindex="-1"></a>  <span class="at">row=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">8</span>, <span class="dv">18</span>),</span>
+<span id="cb4-10"><a href="figures-tables-hosting-gitbook.html#cb4-10" tabindex="-1"></a>  <span class="at">bold =</span> <span class="cn">TRUE</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="figures-tables-hosting-gitbook.html#cb4-11" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">width =</span> <span class="st">&quot;14cm&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="figures-tables-hosting-gitbook.html#cb4-12" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">18</span>), <span class="at">hline_after =</span> T)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:kable">Table 4.1: </span>Relevant influential international, metropolitan and local UHI and urban expansion policies, strategies and assessments (with publication date) referred to in this paper. * Denotes documents that lack specific UHI related policy but recognise the value of maintaining vegetation.
+<span id="tab:kable">Table 4.1: </span><span id="tab:kable">Table 4.2: </span>Relevant influential international, metropolitan and local UHI and urban expansion policies, strategies and assessments (with publication date) referred to in this paper. * Denotes documents that lack specific UHI related policy but recognise the value of maintaining vegetation.
 </caption>
 <thead>
 <tr>
@@ -410,7 +429,7 @@ The Spatial Development Strategy For Greater London (2017)
 </tr>
 <tr>
 <td style="text-align:left;width: 14cm; ">
-Western Australia Planning Commission, Perth and Peel <span class="citation">(<a href="#ref-3.5" role="doc-biblioref"><strong>3.5?</strong></a>)</span> million (2015)
+Western Australia Planning Commission, Perth and Peel <span class="citation">(<a href="#ref-3.5"><strong>3.5?</strong></a>)</span> million (2015)
 </td>
 </tr>
 <tr>
@@ -519,8 +538,8 @@ City of Subiaco, Plant Pathogen Management Plan(2015)*
 <p>Now remember to cross reference this table, it would be…Table <code>\@ref(tab:kable)</code>, giving Table <a href="figures-tables-hosting-gitbook.html#tab:kable">4.1</a></p>
 </div>
 </div>
-<div id="hosting-the-book" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Hosting the book</h2>
+<div id="hosting-the-book" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Hosting the book<a href="figures-tables-hosting-gitbook.html#hosting-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You will need to create a new GitHub repository to host your book online using GitHub pages — like the example is. GitHub pages takes a load of <code>.html</code> files and makes a website.</p>
 <p>To do so you need to set up a few things</p>
 <ol style="list-style-type: decimal">
@@ -540,12 +559,11 @@ City of Subiaco, Plant Pathogen Management Plan(2015)*
           </div>
         </div>
       </div>
-<a href="equations-and-direct-quotes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="discussion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -556,39 +574,43 @@ City of Subiaco, Plant Pathogen Management Plan(2015)*
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/andrewmaclachlan/CASA-MSc-thesis/edit/main/04-results.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["CASA-Thesis.pdf", "https://github.com/andrewmaclachlan/CASA-MSc-thesis/raw/main/04-results.Rmd"],
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-}
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/Aprilmiaoyilee/CASA-Jaipur/edit/main/04-results.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CASA-Thesis.pdf", "https://github.com/Aprilmiaoyilee/CASA-Jaipur/raw/main/04-results.Rmd"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>
@@ -599,7 +621,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -4,26 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Abbreviations | CASA dissertation using Bookdown</title>
+  <title>Abbreviations | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India</title>
   <meta name="description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="generator" content="bookdown 0.21.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Abbreviations | CASA dissertation using Bookdown" />
+  <meta property="og:title" content="Abbreviations | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India" />
   <meta property="og:type" content="book" />
   
-  
   <meta property="og:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="github-repo" content="andrewmaclachlan/CASA-MSc-thesis" />
+  <meta name="github-repo" content="Aprilmiaoyilee/CASA-Jaipur" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Abbreviations | CASA dissertation using Bookdown" />
+  <meta name="twitter:title" content="Abbreviations | Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India" />
   
   <meta name="twitter:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
   
 
 
 
-<meta name="date" content="2021-04-12" />
+<meta name="date" content="2025-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,9 +30,9 @@
   
   
 <link rel="prev" href="acknowledgements.html"/>
-<link rel="next" href="bookdown-basics.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="introduction.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -60,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -70,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -124,10 +123,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -166,63 +170,67 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="declaration.html"><a href="declaration.html"><i class="fa fa-check"></i>Declaration</a></li>
 <li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
 <li class="chapter" data-level="" data-path="abbreviations.html"><a href="abbreviations.html"><i class="fa fa-check"></i>Abbreviations</a></li>
-<li class="chapter" data-level="1" data-path="bookdown-basics.html"><a href="bookdown-basics.html"><i class="fa fa-check"></i><b>1</b> Bookdown basics</a>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="LR.html"><a href="LR.html"><i class="fa fa-check"></i><b>2</b> Literature Review</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="bookdown-basics.html"><a href="bookdown-basics.html#structure"><i class="fa fa-check"></i><b>1.1</b> Structure</a></li>
-<li class="chapter" data-level="1.2" data-path="bookdown-basics.html"><a href="bookdown-basics.html#building-the-book"><i class="fa fa-check"></i><b>1.2</b> Building the book</a></li>
-<li class="chapter" data-level="1.3" data-path="bookdown-basics.html"><a href="bookdown-basics.html#yamls"><i class="fa fa-check"></i><b>1.3</b> YAMLs</a></li>
-<li class="chapter" data-level="1.4" data-path="bookdown-basics.html"><a href="bookdown-basics.html#formatting"><i class="fa fa-check"></i><b>1.4</b> Formatting</a></li>
-<li class="chapter" data-level="1.5" data-path="bookdown-basics.html"><a href="bookdown-basics.html#index-file"><i class="fa fa-check"></i><b>1.5</b> Index file</a></li>
-<li class="chapter" data-level="1.6" data-path="bookdown-basics.html"><a href="bookdown-basics.html#preamble"><i class="fa fa-check"></i><b>1.6</b> Preamble</a></li>
-<li class="chapter" data-level="1.7" data-path="bookdown-basics.html"><a href="bookdown-basics.html#change-this-to-a-thesis"><i class="fa fa-check"></i><b>1.7</b> Change this to a thesis</a></li>
-<li class="chapter" data-level="1.8" data-path="bookdown-basics.html"><a href="bookdown-basics.html#word-count"><i class="fa fa-check"></i><b>1.8</b> Word count</a></li>
-<li class="chapter" data-level="1.9" data-path="bookdown-basics.html"><a href="bookdown-basics.html#adding-a-pdf"><i class="fa fa-check"></i><b>1.9</b> Adding a pdf</a></li>
-<li class="chapter" data-level="1.10" data-path="bookdown-basics.html"><a href="bookdown-basics.html#writing-code"><i class="fa fa-check"></i><b>1.10</b> Writing code</a></li>
-<li class="chapter" data-level="1.11" data-path="bookdown-basics.html"><a href="bookdown-basics.html#package-reproducibility"><i class="fa fa-check"></i><b>1.11</b> Package reproducibility</a></li>
+<li class="chapter" data-level="2.1" data-path="LR.html"><a href="LR.html#digital-urban-planning-platforms-in-the-era-of-smart-cities"><i class="fa fa-check"></i><b>2.1</b> Digital Urban Planning Platforms in the Era of Smart Cities</a></li>
+<li class="chapter" data-level="2.2" data-path="LR.html"><a href="LR.html#urban-data-scarcity-challenges-from-the-global-south"><i class="fa fa-check"></i><b>2.2</b> Urban Data Scarcity: Challenges from the Global South</a></li>
+<li class="chapter" data-level="2.3" data-path="LR.html"><a href="LR.html#urban-development-and-digital-policy-in-india-and-jaipur"><i class="fa fa-check"></i><b>2.3</b> Urban Development and Digital Policy in India and Jaipur</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="LR.html"><a href="LR.html#national-context-indias-urbanisation-and-digital-agenda"><i class="fa fa-check"></i><b>2.3.1</b> National Context: India’s Urbanisation and Digital Agenda</a></li>
+<li class="chapter" data-level="2.3.2" data-path="LR.html"><a href="LR.html#city-context-jaipurs-urban-structure-and-spatial-heterogeneity"><i class="fa fa-check"></i><b>2.3.2</b> City Context: Jaipur’s Urban Structure and Spatial Heterogeneity</a></li>
+<li class="chapter" data-level="2.3.3" data-path="LR.html"><a href="LR.html#local-reality-digital-initiatives-and-data-limitations"><i class="fa fa-check"></i><b>2.3.3</b> Local Reality: Digital Initiatives and Data Limitations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="crossref.html"><a href="crossref.html"><i class="fa fa-check"></i><b>2</b> Cross referencing</a>
+<li class="chapter" data-level="2.4" data-path="LR.html"><a href="LR.html#remote-sensing-and-open-data-for-digital-planning"><i class="fa fa-check"></i><b>2.4</b> Remote Sensing and Open Data for Digital Planning</a></li>
+<li class="chapter" data-level="2.5" data-path="LR.html"><a href="LR.html#existing-methods-for-estimating-urban-activities"><i class="fa fa-check"></i><b>2.5</b> Existing Methods for Estimating Urban Activities</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="crossref.html"><a href="crossref.html#chapters-or-sections"><i class="fa fa-check"></i><b>2.1</b> Chapters or sections</a></li>
-<li class="chapter" data-level="2.2" data-path="crossref.html"><a href="crossref.html#figures-tables-even-code-chunks"><i class="fa fa-check"></i><b>2.2</b> Figures, tables, even code chunks</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="crossref.html"><a href="crossref.html#figures"><i class="fa fa-check"></i><b>2.2.1</b> Figures</a></li>
-<li class="chapter" data-level="2.2.2" data-path="crossref.html"><a href="crossref.html#tables"><i class="fa fa-check"></i><b>2.2.2</b> Tables</a></li>
+<li class="chapter" data-level="2.5.1" data-path="LR.html"><a href="LR.html#population-disaggregation"><i class="fa fa-check"></i><b>2.5.1</b> Population Disaggregation</a></li>
+<li class="chapter" data-level="2.5.2" data-path="LR.html"><a href="LR.html#modelling-economic-vitality"><i class="fa fa-check"></i><b>2.5.2</b> Modelling Economic Vitality</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="crossref.html"><a href="crossref.html#citing-documents"><i class="fa fa-check"></i><b>2.3</b> Citing documents</a></li>
-<li class="chapter" data-level="2.4" data-path="crossref.html"><a href="crossref.html#citing-using-software"><i class="fa fa-check"></i><b>2.4</b> Citing using software</a></li>
-<li class="chapter" data-level="2.5" data-path="crossref.html"><a href="crossref.html#footnotes"><i class="fa fa-check"></i><b>2.5</b> Footnotes</a></li>
+<li class="chapter" data-level="2.6" data-path="LR.html"><a href="LR.html#summary-for-literature-review"><i class="fa fa-check"></i><b>2.6</b> Summary for Literature Review</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html"><i class="fa fa-check"></i><b>3</b> Equations and direct quotes</a>
+<li class="chapter" data-level="3" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i><b>3</b> Methodology</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html#equations"><i class="fa fa-check"></i><b>3.1</b> Equations</a></li>
-<li class="chapter" data-level="3.2" data-path="equations-and-direct-quotes.html"><a href="equations-and-direct-quotes.html#quotes"><i class="fa fa-check"></i><b>3.2</b> Block quotes (or direct quotes)</a></li>
+<li class="chapter" data-level="3.1" data-path="methodology.html"><a href="methodology.html#study-area"><i class="fa fa-check"></i><b>3.1</b> Study Area</a></li>
+<li class="chapter" data-level="3.2" data-path="methodology.html"><a href="methodology.html#data-sources-and-preparation"><i class="fa fa-check"></i><b>3.2</b> Data Sources and Preparation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="methodology.html"><a href="methodology.html#data-for-mgwr"><i class="fa fa-check"></i><b>3.2.1</b> Data for MGWR</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methodology.html"><a href="methodology.html#data-for-pca"><i class="fa fa-check"></i><b>3.2.2</b> Data for PCA</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html"><i class="fa fa-check"></i><b>4</b> Figures, tables, hosting GitBook</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#including-figures-and-tables"><i class="fa fa-check"></i><b>4.1</b> Including figures and tables</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#figures-1"><i class="fa fa-check"></i><b>4.1.1</b> Figures</a></li>
-<li class="chapter" data-level="4.1.2" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#tables-1"><i class="fa fa-check"></i><b>4.1.2</b> Tables</a></li>
+<li class="chapter" data-level="3.3" data-path="methodology.html"><a href="methodology.html#population-disaggregation-mgwrdasymetric-hybrid-approach"><i class="fa fa-check"></i><b>3.3</b> Population Disaggregation: MGWR–Dasymetric Hybrid Approach</a></li>
+<li class="chapter" data-level="3.4" data-path="methodology.html"><a href="methodology.html#economic-activity-index-principal-component-analysis-approach"><i class="fa fa-check"></i><b>3.4</b> Economic Activity Index: Principal Component Analysis Approach</a></li>
+<li class="chapter" data-level="3.5" data-path="methodology.html"><a href="methodology.html#integration-into-gee-web-application"><i class="fa fa-check"></i><b>3.5</b> Integration into GEE Web Application</a></li>
+<li class="chapter" data-level="3.6" data-path="methodology.html"><a href="methodology.html#ethical-considerations"><i class="fa fa-check"></i><b>3.6</b> Ethical Considerations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="figures-tables-hosting-gitbook.html"><a href="figures-tables-hosting-gitbook.html#hosting-the-book"><i class="fa fa-check"></i><b>4.2</b> Hosting the book</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#response-to-rq1-where-people-live-population-estimation"><i class="fa fa-check"></i><b>4.1</b> Response to RQ1: Where People Live – Population Estimation</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#mgwr-model-performance"><i class="fa fa-check"></i><b>4.1.1</b> MGWR Model Performance</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#estimated-population-maps"><i class="fa fa-check"></i><b>4.1.2</b> Estimated Population Maps</a></li>
+<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#distribution-validation-with-ghsl"><i class="fa fa-check"></i><b>4.1.3</b> Distribution Validation with GHSL</a></li>
+<li class="chapter" data-level="4.1.4" data-path="results.html"><a href="results.html#explanatory-variables-shaping-population-density-in-the-mgwr"><i class="fa fa-check"></i><b>4.1.4</b> Explanatory Variables Shaping Population Density in the MGWR</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#response-to-rq1-where-economic-activity-levels-are-high-economic-activity-index-eai"><i class="fa fa-check"></i><b>4.2</b> Response to RQ1: Where Economic Activity levels are High – Economic Activity Index (EAI)</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#correlation-among-input-variables"><i class="fa fa-check"></i><b>4.2.1</b> Correlation among Input Variables</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results.html"><a href="results.html#pca-results"><i class="fa fa-check"></i><b>4.2.2</b> PCA Results</a></li>
+<li class="chapter" data-level="4.2.3" data-path="results.html"><a href="results.html#spatial-patterns-of-economic-activity"><i class="fa fa-check"></i><b>4.2.3</b> Spatial Patterns of Economic Activity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#response-to-rq2-gee-jaipur-urban-activities-analysis-app"><i class="fa fa-check"></i><b>4.3</b> Response to RQ2: GEE – Jaipur Urban Activities Analysis App</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="discussion.html"><a href="discussion.html#research-significance"><i class="fa fa-check"></i><b>5.1</b> Research significance</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="discussion.html"><a href="discussion.html#global-development-goals"><i class="fa fa-check"></i><b>5.1.1</b> Global development goals</a></li>
-<li class="chapter" data-level="5.1.2" data-path="discussion.html"><a href="discussion.html#local-policy"><i class="fa fa-check"></i><b>5.1.2</b> Local policy</a></li>
-<li class="chapter" data-level="5.1.3" data-path="discussion.html"><a href="discussion.html#academic-research"><i class="fa fa-check"></i><b>5.1.3</b> Academic research</a></li>
+<li class="chapter" data-level="5.1" data-path="discussion.html"><a href="discussion.html#evaluating-population-disaggregation-strengths-and-localised-biases"><i class="fa fa-check"></i><b>5.1</b> Evaluating Population Disaggregation: Strengths and Localised Biases</a></li>
+<li class="chapter" data-level="5.2" data-path="discussion.html"><a href="discussion.html#interpreting-the-eai-potentials-and-methodological-limits"><i class="fa fa-check"></i><b>5.2</b> Interpreting the EAI: Potentials and Methodological Limits</a></li>
+<li class="chapter" data-level="5.3" data-path="discussion.html"><a href="discussion.html#evaluating-the-gee-web-app-for-digital-planning"><i class="fa fa-check"></i><b>5.3</b> Evaluating the GEE Web App for Digital Planning</a></li>
+<li class="chapter" data-level="5.4" data-path="discussion.html"><a href="discussion.html#limitations-and-transferability"><i class="fa fa-check"></i><b>5.4</b> Limitations and Transferability</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="discussion.html"><a href="discussion.html#limitations"><i class="fa fa-check"></i><b>5.2</b> Limitations</a></li>
-<li class="chapter" data-level="5.3" data-path="discussion.html"><a href="discussion.html#transferability"><i class="fa fa-check"></i><b>5.3</b> Transferability</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="conclusion.html"><a href="conclusion.html#recommedations"><i class="fa fa-check"></i><b>6.1</b> Recommedations</a></li>
-</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="appendix-a-research-log.html"><a href="appendix-a-research-log.html"><i class="fa fa-check"></i>Appendix A Research log</a></li>
+<li class="chapter" data-level="" data-path="appendix-b-poi-kernel-density-correlation-matrix-in-mgwr.html"><a href="appendix-b-poi-kernel-density-correlation-matrix-in-mgwr.html"><i class="fa fa-check"></i>Appendix B POI Kernel Density Correlation Matrix in MGWR</a></li>
+<li class="chapter" data-level="" data-path="appendix-c-codes-for-transformation-steps-in-mgwr-population-disaggregation.html"><a href="appendix-c-codes-for-transformation-steps-in-mgwr-population-disaggregation.html"><i class="fa fa-check"></i>Appendix C Codes for Transformation Steps in MGWR Population Disaggregation</a></li>
 <li class="divider"></li>
 <li><a href="" target="blank"></a></li>
 
@@ -235,7 +243,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CASA dissertation using Bookdown</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Digital Planning Support in a Data-scarce Context by Estimating Urban Activities : A Case Study in Jaipur City, India</a>
           </h1>
         </div>
 
@@ -243,8 +251,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="abbreviations" class="section level1 unnumbered">
-<h1>Abbreviations</h1>
+<div id="abbreviations" class="section level1 unnumbered hasAnchor">
+<h1>Abbreviations<a href="abbreviations.html#abbreviations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -259,26 +267,210 @@ Abbreviation
 <tbody>
 <tr>
 <td style="text-align:left;">
-Digital Elevation Model
+Akaike Information Criterion, corrected
 </td>
 <td style="text-align:left;">
-DEM
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Digital Surface Model
-</td>
-<td style="text-align:left;">
-DSM
+AICc
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Digital Terrain Model
+Economic Activity Index
 </td>
 <td style="text-align:left;">
-DTM
+EAI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+First/Second Principal Component
+</td>
+<td style="text-align:left;">
+PC1/PC2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Geographical Random Forest
+</td>
+<td style="text-align:left;">
+GRF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Global Human Settlement Layer
+</td>
+<td style="text-align:left;">
+GHSL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Google Earth Engine
+</td>
+<td style="text-align:left;">
+GEE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gross Domestic Product
+</td>
+<td style="text-align:left;">
+GDP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Information and Communication Technologies
+</td>
+<td style="text-align:left;">
+ICT
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jaipur Development Authority
+</td>
+<td style="text-align:left;">
+JDA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jaipur Municipal Corporation
+</td>
+<td style="text-align:left;">
+JMC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Land Use and Land Cover
+</td>
+<td style="text-align:left;">
+LULC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Light Detection and Ranging
+</td>
+<td style="text-align:left;">
+LiDAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Moderate Resolution Imaging Spectroradiometer
+</td>
+<td style="text-align:left;">
+MODIS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Multiscale Geographically Weighted Regression
+</td>
+<td style="text-align:left;">
+MGWR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nighttime Light(s)
+</td>
+<td style="text-align:left;">
+NTL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Normalized Difference Vegetation Index
+</td>
+<td style="text-align:left;">
+NDVI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OpenStreetMap
+</td>
+<td style="text-align:left;">
+OSM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participatory Geographic Information System
+</td>
+<td style="text-align:left;">
+PGIS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Planning Support Systems
+</td>
+<td style="text-align:left;">
+PSS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Points of Interest
+</td>
+<td style="text-align:left;">
+POI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Principal Component Analysis
+</td>
+<td style="text-align:left;">
+PCA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rajasthan State Industrial Development and Investment Corporation
+</td>
+<td style="text-align:left;">
+RIICO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Random Forest
+</td>
+<td style="text-align:left;">
+RF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Synthetic Aperture Radar
+</td>
+<td style="text-align:left;">
+SAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Visible Infrared Imaging Radiometer Suite
+</td>
+<td style="text-align:left;">
+VIIRS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Volunteered Geographic Information
+</td>
+<td style="text-align:left;">
+VGI
 </td>
 </tr>
 </tbody>
@@ -291,11 +483,10 @@ DTM
         </div>
       </div>
 <a href="acknowledgements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bookdown-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -306,39 +497,43 @@ DTM
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/andrewmaclachlan/CASA-MSc-thesis/edit/main/00-preamble.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["CASA-Thesis.pdf", "https://github.com/andrewmaclachlan/CASA-MSc-thesis/raw/main/00-preamble.Rmd"],
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-}
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/Aprilmiaoyilee/CASA-Jaipur/edit/main/00-preamble.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CASAThesisMiaoyi.pdf", "https://github.com/Aprilmiaoyilee/CASA-Jaipur/raw/main/00-preamble.Rmd"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>
@@ -349,7 +544,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

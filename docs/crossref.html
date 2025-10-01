@@ -5,25 +5,24 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Cross referencing | CASA dissertation using Bookdown</title>
-  <meta name="description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="generator" content="bookdown 0.21.10 and GitBook 2.6.7" />
+  <meta name="description" content="This dissertation is submitted in part requirement for the MSc in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Cross referencing | CASA dissertation using Bookdown" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
-  <meta name="github-repo" content="andrewmaclachlan/CASA-MSc-thesis" />
+  <meta property="og:description" content="This dissertation is submitted in part requirement for the MSc in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
+  <meta name="github-repo" content="Aprilmiaoyilee/CASA-Jaipur" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Cross referencing | CASA dissertation using Bookdown" />
   
-  <meta name="twitter:description" content="This dissertation is submitted in part requirement for the MSc (Or MRes) in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
+  <meta name="twitter:description" content="This dissertation is submitted in part requirement for the MSc in the Centre for Advanced Spatial Analysis, Bartlett Faculty of the Built Environment, UCL" />
   
 
 
 
-<meta name="date" content="2021-04-12" />
+<meta name="date" content="2025-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="bookdown-basics.html"/>
 <link rel="next" href="equations-and-direct-quotes.html"/>
-<script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -60,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -70,7 +69,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -124,10 +123,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -223,6 +227,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="appendix-a-research-log.html"><a href="appendix-a-research-log.html"><i class="fa fa-check"></i>Appendix A Research log</a></li>
+<li class="chapter" data-level="" data-path="appendix-c-research-log.html"><a href="appendix-c-research-log.html"><i class="fa fa-check"></i>Appendix C Research log</a></li>
 <li class="divider"></li>
 <li><a href="" target="blank"></a></li>
 
@@ -243,10 +248,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="crossref" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Cross referencing</h1>
-<div id="chapters-or-sections" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Chapters or sections</h2>
+<div id="crossref" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Cross referencing<a href="crossref.html#crossref" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="chapters-or-sections" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Chapters or sections<a href="crossref.html#chapters-or-sections" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Always give you sections an additional reference…e.g. <code># Cross referencing {#crossref}</code> This gives us two reference points. The first we can use to reference the section name…</p>
 <ol style="list-style-type: decimal">
 <li>We want to say see the Introduction (or other section label)we use …<code>[Cross referencing]</code> giving <a href="crossref.html#crossref">Cross referencing</a></li>
@@ -256,12 +261,12 @@ div.csl-indent {
 <li>Just reference the label we gave to the section….see Chapter <code>\@ref(crossref)</code> giving see Chapter <a href="crossref.html#crossref">2</a></li>
 </ol>
 </div>
-<div id="figures-tables-even-code-chunks" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Figures, tables, even code chunks</h2>
-<div id="figures" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Figures</h3>
+<div id="figures-tables-even-code-chunks" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Figures, tables, even code chunks<a href="crossref.html#figures-tables-even-code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="figures" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Figures<a href="crossref.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When you create a figure, table or code chunk there is an option to name the chunk something. Do it!. Don’t be like me and not! Be warned that these chunk names can’t have any fancy or strange characters in them e.g. _. I think a - is allowed, but i’d keep it simple. Here is a figure. In the chunk options after <code>r</code> i have specified <code>nice-fig, echo=FALSE, fig.cap='Here is a nice figure!', out.width='80%'</code></p>
-<div class="figure"><span id="fig:nice-fig"></span>
+<div class="figure"><span style="display:block;" id="fig:nice-fig"></span>
 <img src="CASA-Thesis_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">
 Figure 2.1: Here is a nice figure!
@@ -269,391 +274,179 @@ Figure 2.1: Here is a nice figure!
 </div>
 <p>To cross reference this just include Figure <code>\@ref(fig:nice-fig)</code> which gives…Figure <a href="crossref.html#fig:nice-fig">2.1</a>.</p>
 </div>
-<div id="tables" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Tables</h3>
-<p>For tables i’d recommend using the <code>kable</code> package. Here is an example table, same deal as the <a href="figures-tables-hosting-gitbook.html#figures-1">Figures</a> section with naming the code chunk.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="crossref.html#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb3-2"><a href="crossref.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb3-3"><a href="crossref.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb3-4"><a href="crossref.html#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="tables" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Tables<a href="crossref.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For tables i’d recommend using the <code>kable</code> package. Here is an example table, same deal as the <a href="crossref.html#figures">Figures</a> section with naming the code chunk.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="crossref.html#cb3-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb3-2"><a href="crossref.html#cb3-2" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb3-3"><a href="crossref.html#cb3-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb3-4"><a href="crossref.html#cb3-4" tabindex="-1"></a>)</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!
-</caption>
+<caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
 <thead>
-<tr>
-<th style="text-align:right;">
-Sepal.Length
-</th>
-<th style="text-align:right;">
-Sepal.Width
-</th>
-<th style="text-align:right;">
-Petal.Length
-</th>
-<th style="text-align:right;">
-Petal.Width
-</th>
-<th style="text-align:left;">
-Species
-</th>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.7
-</td>
-<td style="text-align:right;">
-3.2
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.6
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-3.6
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-3.9
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.6
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.4
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.1
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-3.7
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.8
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.8
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.1
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4.3
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-1.1
-</td>
-<td style="text-align:right;">
-0.1
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.8
-</td>
-<td style="text-align:right;">
-4.0
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.7
-</td>
-<td style="text-align:right;">
-4.4
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-3.9
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.7
-</td>
-<td style="text-align:right;">
-3.8
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5.1
-</td>
-<td style="text-align:right;">
-3.8
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:left;">
-setosa
-</td>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
 </tr>
 </tbody>
 </table>
 <p>Now to cite the table it’s just Table <code>\@ref(tab:nice-tab)</code>, giving Table <a href="crossref.html#tab:nice-tab">2.1</a></p>
 </div>
 </div>
-<div id="citing-documents" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Citing documents</h2>
-<p>To cite documents they need to be in a <code>.bib</code> file, that must be loaded within your <code>index.Rmd</code> with the <code>bibliography:</code> argument. Have a look at my <code>index.Rmd</code> and you will see there are three such files, two that were provided as an example here <code>book.bib</code>, <code>packages.bib</code> and one that i added <code>test.bib</code>. I can simply cite the papers within them using the citation key e.g. <code>[@xie2015]</code> giving <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span>. Make sure you remove the ones you don’t need.</p>
-<p>If you remove the citation from the <code>[]</code> it will give <span class="citation"><a href="#ref-xie2015" role="doc-biblioref">Xie</a> (<a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
-<p>When citing multiple authors use a ; <code>[@xie2015; @maclachlan2017urban]</code> = <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>; <a href="#ref-maclachlan2017urban" role="doc-biblioref">MacLachlan et al. 2017</a>)</span></p>
-<p>To remove the author add a minus sign <code>-@maclachlan2017urban</code> = <span class="citation">(<a href="#ref-maclachlan2017urban" role="doc-biblioref">2017</a>)</span></p>
+<div id="citing-documents" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Citing documents<a href="crossref.html#citing-documents" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To cite documents they need to be in a <code>.bib</code> file, that must be loaded within your <code>index.Rmd</code> with the <code>bibliography:</code> argument. Have a look at my <code>index.Rmd</code> and you will see there are three such files, two that were provided as an example here <code>book.bib</code>, <code>packages.bib</code> and one that i added <code>test.bib</code>. I can simply cite the papers within them using the citation key e.g. <code>[@xie2015]</code> giving <span class="citation">(<a href="#ref-xie2015">Xie 2015</a>)</span>. Make sure you remove the ones you don’t need.</p>
+<p>If you remove the citation from the <code>[]</code> it will give <span class="citation">Xie (<a href="#ref-xie2015">2015</a>)</span>.</p>
+<p>When citing multiple authors use a ; <code>[@xie2015; @maclachlan2017urban]</code> = <span class="citation">(<a href="#ref-xie2015">Xie 2015</a>; <a href="#ref-maclachlan2017urban">MacLachlan et al. 2017</a>)</span></p>
+<p>To remove the author add a minus sign <code>-@maclachlan2017urban</code> = <span class="citation">(<a href="#ref-maclachlan2017urban">2017</a>)</span></p>
 </div>
-<div id="citing-using-software" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Citing using software</h2>
+<div id="citing-using-software" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Citing using software<a href="crossref.html#citing-using-software" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Zotero can now continuously update your <code>.bib</code> file.</p>
 <p>To do so:</p>
 <ol style="list-style-type: decimal">
@@ -673,14 +466,14 @@ setosa
 </ol>
 <p>You can also manage references using <code>citr</code> which makes finding them to cite much easier. In RStudio go: Addins (top tool bar) &gt; insert citations.</p>
 </div>
-<div id="footnotes" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Footnotes</h2>
-<p>To add a footnote use <code>^[This is a footnote]</code> to create.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div id="footnotes" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Footnotes<a href="crossref.html#footnotes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To add a footnote use <code>^[This is a footnote]</code> to create <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-maclachlan2017urban" class="csl-entry">
 MacLachlan, Andrew, Eloise Biggs, Gareth Roberts, and Bryan Boruff. 2017. <span>“Urban Growth Dynamics in Perth, Western Australia: Using Applied Remote Sensing for Sustainable Future Planning.”</span> <em>Land</em> 6 (1): 9.
 </div>
@@ -704,7 +497,6 @@ Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -715,39 +507,43 @@ Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": false
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/andrewmaclachlan/CASA-MSc-thesis/edit/main/02-literature.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["CASA-Thesis.pdf", "https://github.com/andrewmaclachlan/CASA-MSc-thesis/raw/main/02-literature.Rmd"],
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-}
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": false
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/andrewmaclachlan/CASA-MSc-thesis/edit/main/02-literature.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["CASA-Thesis.pdf", "https://github.com/andrewmaclachlan/CASA-MSc-thesis/raw/main/02-literature.Rmd"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
 });
 });
 </script>
@@ -758,7 +554,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
